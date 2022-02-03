@@ -1,4 +1,111 @@
 수업내용 기록 텍스트
 
 
+ㅇㅇㅇ
+
+songhyeonbeom
+
+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
+
+git key
+깃 키 설정
+
+
+
+
+cd ~/.bash/themes/git_bash_windows_powerline
+source theme.bash
+
+
+theme.bash
+
+
+source theme.bash
+
+
+
+
+
+git add text.html 
+git commit -m "커밋 할 말"
+
+
+
+theme.bash  를 옮겨야된다.
+
+
+cd   (제일 앞으로 이동한다.)
+옮겼다.
+mv .bash/themes//git_bash_windows_powerline/theme.bash .bash
+
+vim.tiny .bashrc    (열기)
+
+밑에 추가해준다.
+source ~/.bash/theme.bash
+
+터미널 열때 자동으로 테마가 적용되었다.
+
+
+수정해서 올려보기.
+vim.tiny text.html
+
+git pull
+
+git push
+
+샘플 파일을 지워버리자.
+rm -rf sample.txt
+
+
+git log --graph --oneline
+
+
+git pull origin master
+
+
+
+git branch issue1
+git branch
+
+이슈1으로 변경.
+git checkout issue1
+
+
+
+git branch 날리기 명령어.
+git push origin --delete issue1
+                       (브랜치 이름)
+
+
+git status = ls  같은것. 
+
+
+git checkout main
+git checkout issue1
+
+main branch 에서 명령어를 먹이면
+다 땡겨와지더라.
+git merge issue1
+
+
+cat 파일이름.확장자
+파일 바로보기
+
+
+
+
+
+git remote add origin (( https://github.com/songhyeonbeom/pyqt5-test.git ))
+저장소 추가 라는데
+
+
+
+
+
+
+https://github.com/songhyeonbeom/pyqt5-test.git
+명령어 + 깃 주소 = 소스 한번에 내려받기
+찾아봐야됌 명령어 까먹음.
+
+
 
