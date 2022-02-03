@@ -5,7 +5,7 @@
 
 songhyeonbeom
 
-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
+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
 
 git key
 깃 키 설정
