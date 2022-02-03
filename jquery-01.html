@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/회원가입스타일.css" rel="stylesheet" type="text/css">
+    <title> 회원가입 양식.html </title>
+    <script language="javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script>
+        function checkz() {
+            var getCheck = RegExp(/^[a-zA-Z0-9]{4,12}$/);
+            var getIntro = $("#intro").val().replace(/\s|/gi, '');
+            var hobbyCheck = false;
+            var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+            var getCheckPwd = RegExp(/(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/);
+            var getName = RegExp(/^[가-힣]+$/);
+            var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정
+            var buf = new Array(13); //주민등록번호 배열
+            var phoneCheck = /\d{3}-\d{4}-\d{4}/;
+
+            if (!getCheck.test($("#tdID").val())) {
+                alert("아이디가 상식이 맞지 않는군용!");
+                $("#tdID").val("");
+                $("#tdID").focus();
+                return false;
+            }
+
+
+
+
+            // if (!phoneCheck.test($("#hp1").val()))
+            // {
+            //     alert("형식에 맞게 입력하시라.");
+            //     $("#hp1").val("");
+            //     $("#hp1").focus();
+            //     return false;
+            // }
+
+
+
+            if(!getMail.test($("#mail").val() == ""))
+            {
+                alert("메일을 입력하세요.");
+                $("#mail").focus();
+                return false;
+            }
+
+            // if( $("#name").val() == "")
+            // {
+            //     alert("이름을 입력하세요.");
+            //     $("#name").focus();
+            //     return false;
+            // }
+
+            // if(( $("#pnum").val() == "") || ( $("#nnum").val() == ""))
+            // {
+            //     alert("주민번호를 입력하세요.");
+            //     $("#pnum").focus();
+            //     return false;
+            // }
+            
+            if(check_jumin()==false){
+                return false;
+            }
+        }
+
+        function check_jumin() {
+            var jumins3 = $("#pnum").val() + $("#nnum").val();
+            //주민등록번호 생년월일 전달
+
+            var fmt = RegExp(/^\d{6}[1234]\d{6}$/)  //포멧 설정
+            var buf = new Array(13);
+
+            //주민번호 유효성 검사
+            if (!fmt.test(jumins3)) {
+                alert("주민등록번호 형식에 맞게 입력해주세요");
+                $("#pnum").focus();
+                return false;
+            }
+            for (var i = 0; i < buf.length; i++) {
+                buf[i] = parseInt(jumins3.charAt(i));
+            }
+
+            var multipliers = [2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5];// 밑에 더해주는 12자리 숫자들
+            var sum = 0;
+
+            for (var i = 0; i < 12; i++) {
+                sum += (buf[i] *= multipliers[i]);// 배열끼리12번 돌면서
+            }
+
+            if ((11 - (sum % 11)) % 10 != buf[12]) {
+                alert("잘못된 주민등록번호 입니다.");
+                $("#pnum").focus();
+                return false;
+            }
+
+            var birthYear = (jumins3.charAt(6) <= "2") ? "19" : "20";
+            birthYear += $("#pnum").val().substr(0, 2);
+            var birthMonth = $("#pnum").val().substr(2, 2);
+            var birthDate = $("#pnum").val().substr(4, 2);
+            var birth = new Date(birthYear, birthMonth, birthDate);
+
+
+            $("#year").val(birthYear);
+            $("#month").val(birthMonth);
+            $("#day").val(birthDate);
+
+
+            // if (!birthYear.test($("jum").val())) {
+            //     alert("주민번호 틀렸음.");
+            //     $("#jum").val("");
+            //     $("#jum").focus();
+            //     return false;
+            // }
+        }
+
+    </script>
+
+    <title> 회원가입 폼 </title>
+</head>
+<style>
+    table {
+        border: 10px solid black;
+        padding: 20px;
+    }
+</style>
+
+<body>
+    <h1> 회원가입 화면 </h1>
+    <form onsubmit="return checkz()" method="post">
+        <!-- action="mailto:erekude@naver.com" -->
+
+        <table>
+            <tr>
+                <td colspan="2">회원 기본정보</td>
+            </tr>
+            <tr>
+                <td> 아이디 : </td>
+                <td><input type="text" name="id" maxlength="12" id="tdID"></td>
+            </tr>
+            <tr>
+                <td> 비밀번호 : </td>
+                <td><input type="password" maxlength="12" id="idPwd"> 4~12자 입력 </td>
+            </tr>
+            <tr>
+                <td> 비밀번호(재) : </td>
+                <td> <input type="password" maxlength="12" id="cpass"></td>
+            </tr>
+            <tr>
+                <td> E-mail : </td>
+                <td> <input type="text" name="mail" id="mail"> 예) id@domail.com </td>
+            </tr>
+            <tr>
+                <td> 이름 : </td>
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td> 핸드폰 : </td>
+                <td><input type="text" name="hp1" id="hp1" maxlength="13" value="">
+                    <!-- <input type="number" name="hp2" id="hp2" maxlength="4">
+                    <input type="number" name="hp3" id="hp3" maxlength="4"> -->
+                </td>
+            </tr>
+        </table>
+        <br>
+        <table>
+            <tr>
+                <td colspan="2"> 개인 신상정보 </td>
+            </tr>
+            <tr>
+                <td> 주민번호 : </td>
+                <td><input type="text" name="jum" id="pnum">-
+                    <input type="password" name="jumin" id="nnum"></td>
+            </tr>
+            <tr>
+                <td> 생일 : </td>
+                <td>
+                    <input type="text" autocomplete="OFF" name="nyear" id="year" style="width: 70px" readonly disabled>년
+                    <input type="text" autocomplete="OFF" name="month" id="month" style="width: 50px" readonly
+                        disabled>월
+                    <input type="text" autocomplete="OFF" name="nday" id="day" style="width: 50px" readonly disabled>일
+                </td>
+            </tr>
+            <tr>
+                <td> 관심사 </td>
+                <td> <input type="checkbox" name="hobby[]" value=1>컴퓨터
+                    <input type="checkbox" name="hobby[]" value=2>인터넷
+                    <input type="checkbox" name="hobby[]" value=3>여행
+                    <input type="checkbox" name="hobby[]" value=4>영화감상
+                </td>
+            </tr>
+            <tr>
+                <td> 자기소개 </td>
+                <td><textarea name="my_intro" id="intro" cols="50" rows="5"></textarea></td>
+            </tr>
+        </table>
+        <input type="submit" value="회원가입">
+        <input type="reset" value="다시입력">
+    </form>
+</body>
+
+</html>
