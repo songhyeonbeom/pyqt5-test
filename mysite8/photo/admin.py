@@ -17,3 +17,4 @@ class AlbumAdmin(admin.ModelAdmin):
 class PhotoAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'upload_dt')
 
+

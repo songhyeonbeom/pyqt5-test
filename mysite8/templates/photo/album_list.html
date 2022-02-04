@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}album_list.html{% endblock %}
 
 {% block extra-style %}
@@ -13,9 +13,14 @@
 {% endblock %}
 
 {% block content %}
-<img src ={{static }} >
-{% for item in object_list %}
+<!--<img src="{% static 'imegett/main01.png' %}">-->
 
+
+
+<div id="main333"></div>
+
+
+{% for item in object_list %}
 <div class="mt-5">
     <a class="h2" href="{% url 'photo:album_detail' item.id %}">
         {{ item.name }}</a>&emsp;
@@ -36,6 +41,52 @@
     {% endfor %}
 </div>
 
+
+<style>
+
+
+div#main333 {
+    width: 1920px;
+    height: 500px;
+	background: url("/static/imegett/main01.png") no-repeat;
+    animation:myani02 30s ease infinite;
+	position: relative;
+<!--	left: 12%;-->
+}
+
+@keyframes myani02{
+	10%{
+		background: url("/static/imegett/main02.png") no-repeat;
+	}
+	20%{
+		background: url("/static/imegett/main03.png") no-repeat;
+	}
+	30%{
+		background: url("/static/imegett/main04.png") no-repeat;
+	}
+	40%{
+		background: url("/static/imegett/main05.png") no-repeat;
+	}
+	50%{
+		background: url("/static/imegett/main06.png") no-repeat;
+	}
+	60%{
+		background: url("/static/imegett/main07.jpg") no-repeat;
+	}
+	70%{
+		background: url("/static/imegett/main08.jpg") no-repeat;
+	}
+	80%{
+		background: url("/static/imegett/main09.jpg") no-repeat;
+	}
+	90%{
+	   background: url("/static/imegett/main10.jpeg") no-repeat;
+	}
+}
+
+
+
+</style>
 
 {% endfor %}
 

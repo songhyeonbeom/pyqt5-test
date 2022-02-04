@@ -29,6 +29,7 @@ class Photo(models.Model):
     Material = models.TextField('소재', blank=True)
     image = ThumbnailImageField('상품 사진', upload_to='photo/%Y/%m')
     upload_dt = models.DateTimeField('UPLOAD DATE', auto_now_add=True)
+    stock = models.IntegerField('재고 수량')
     owner = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name='작성자', blank=True, null=True)
 
     class Meta:
