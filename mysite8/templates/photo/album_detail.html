@@ -22,7 +22,7 @@
     <div class="row"> 
 
         {% for photo in object.photo_set.all %} 
-        <div class="col-md-3 mb-5"> 
+        <div class="col-md-1 mb-5">
             <div class="thumbnail">
                 <a href="{{ photo.get_absolute_url }}">
                     <img src="{{ photo.image.url }}" style="width: 100%;">

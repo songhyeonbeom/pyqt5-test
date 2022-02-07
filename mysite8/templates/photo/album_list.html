@@ -9,6 +9,9 @@
 }
 
 
+
+
+
 </style>
 {% endblock %}
 
@@ -16,27 +19,36 @@
 <!--<img src="{% static 'imegett/main01.png' %}">-->
 
 
+<!--<div id="main333"></div>-->
 
 <div id="main333"></div>
 
 
 {% for item in object_list %}
-<div class="mt-5">
+<div class="mt-5" style="position:relative; left:302px;">
     <a class="h2" href="{% url 'photo:album_detail' item.id %}">
         {{ item.name }}</a>&emsp;
     <span class="font-italic h5">{{ item.description }}</span>
 </div>
+<!--<hr style="margin: 0 0 20px 0;">-->
+<a style="margin: 0 0 20px 0; position:relative; left:302px;">
 
-<hr style="margin: 0 0 20px 0;">
-
-<div class="row">
-    {% for photo in item.photo_set.all|slice:":9" %}
-    <div class="ml-5">
+</a>
+<div class="row" style="position:relative; left:302px;">
+    {% for photo in item.photo_set.all|slice:":8" %}
+    <div class="col-md-1 mb-5">
         <div class="thumbnail">
             <a href="{{ photo.get_absolute_url }}">
-                <img src="{{ photo.image.thumb_url }}" style="width: 100%;">
+                <img src="{{ photo.image.url }}" style="width: 110%;">
             </a>
         </div>
+        <ul>
+            <li class="font-italic">{{ photo.title }}</li>
+            <li class="font-italic">{{ photo.money }} 원</li>
+            <li class="font-italic">{{ photo.season }}</li>
+
+            <!--                <li class="font-italic">{{ photo.upload_dt|date:"Y-m-d" }}</li>-->
+        </ul>
     </div>
     {% endfor %}
 </div>
@@ -44,45 +56,46 @@
 
 <style>
 
-
 div#main333 {
-    width: 1920px;
-    height: 500px;
-	background: url("/static/imegett/main01.png") no-repeat;
+    width: 1400px;
+    height: 686px;
+	background: url("/static/imegett/mmain01.jpg") no-repeat;
     animation:myani02 30s ease infinite;
 	position: relative;
-<!--	left: 12%;-->
 }
 
 @keyframes myani02{
-	10%{
-		background: url("/static/imegett/main02.png") no-repeat;
+	14%{
+		background: url("/static/imegett/mmain02.webp") no-repeat;
 	}
-	20%{
-		background: url("/static/imegett/main03.png") no-repeat;
+	28%{
+		background: url("/static/imegett/mmain03.jpg") no-repeat;
 	}
-	30%{
-		background: url("/static/imegett/main04.png") no-repeat;
+	42%{
+		background: url("/static/imegett/mmain04.jpg") no-repeat;
 	}
-	40%{
-		background: url("/static/imegett/main05.png") no-repeat;
-	}
-	50%{
-		background: url("/static/imegett/main06.png") no-repeat;
-	}
-	60%{
-		background: url("/static/imegett/main07.jpg") no-repeat;
+	56%{
+		background: url("/static/imegett/mmain05.webp") no-repeat;
 	}
 	70%{
-		background: url("/static/imegett/main08.jpg") no-repeat;
+		background: url("/static/imegett/mmain06.webp") no-repeat;
 	}
-	80%{
-		background: url("/static/imegett/main09.jpg") no-repeat;
+	84%{
+		background: url("/static/imegett/mmain07.webp") no-repeat;
 	}
-	90%{
-	   background: url("/static/imegett/main10.jpeg") no-repeat;
-	}
+<!--	70%{-->
+<!--		background: url("/static/imegett/main08.jpg") no-repeat;-->
+<!--	}-->
+<!--	80%{-->
+<!--		background: url("/static/imegett/main09.jpg") no-repeat;-->
+<!--	}-->
+<!--	90%{-->
+<!--	   background: url("/static/imegett/main10.jpeg") no-repeat;-->
+<!--	}-->
 }
+
+
+
 
 
 
