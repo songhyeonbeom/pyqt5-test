@@ -19,6 +19,5 @@ def index(request):
     """
     photo 목록 출력
     """
-    Album_list = Album.objects.order_by('-create_date')
-    context = {'Album': Album}
-    return render(request, 'photo/album_list.html', context)
+
+    return render(request, 'photo/album_list.html')
