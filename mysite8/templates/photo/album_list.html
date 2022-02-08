@@ -12,6 +12,7 @@
 
 
 
+
 </style>
 {% endblock %}
 
@@ -25,7 +26,7 @@
 
 
 {% for item in object_list %}
-<div class="mt-5" style="position:relative; left:302px;">
+<div class="mt-5" style="position:relative; left:250px;">
     <a class="h2" href="{% url 'photo:album_detail' item.id %}">
         {{ item.name }}</a>&emsp;
     <span class="font-italic h5">{{ item.description }}</span>
@@ -33,13 +34,13 @@
 <!--<hr style="margin: 0 0 20px 0;">-->
 <!--<a style="margin: 0 0 20px 0; position:relative; left:302px;">-->
 
-</a>
-<div class="row" style="position:relative; left:302px;">
+
+<div class="row" style="position:relative; left:220px;">
     {% for photo in item.photo_set.all|slice:":8" %}
-    <div class="col-md-1 mb-5">
+    <div class="col-md-2 mb-5">
         <div class="thumbnail">
             <a href="{{ photo.get_absolute_url }}">
-                <img src="{{ photo.image.url }}" style="width: 150px;">
+                <img src="{{ photo.image.url }}" style="width: 200px;">
             </a>
         </div>
         <ul>
@@ -50,9 +51,8 @@
             <!--                <li class="font-italic">{{ photo.upload_dt|date:"Y-m-d" }}</li>-->
         </ul>
     </div>
-    {% endfor %}
+{% endfor %}
 </div>
-
 
 <style>
 
@@ -93,6 +93,7 @@ div#main333 {
 <!--	   background: url("/static/imegett/main10.jpeg") no-repeat;-->
 <!--	}-->
 }
+
 
 
 
