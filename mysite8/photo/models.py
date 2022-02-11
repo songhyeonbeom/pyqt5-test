@@ -41,3 +41,6 @@ class Photo(models.Model):
     def get_absolute_url(self):
         return reverse('photo:photo_detail', args=(self.id,))
 
+class Test(models.Model):
+    price = models.CharField(max_length=250, default=0)
+    # price = models.IntegerField(max_length=250, default=0)

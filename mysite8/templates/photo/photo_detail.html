@@ -15,7 +15,7 @@
 
     <ul class="col-md-3 mt-3"  style="position:relative; right:300px;">
         <li class="h5">상품 가격</li>
-        <p class="font-italic">{{ object.money }} 원</p>
+        <p class="price font-italic" data-price="{{ object.money }}">{{ object.money }} 원</p>
 
         <li class="h5">시즌</li>
         <p class="font-italic">{{ object.season }}</p>
@@ -39,8 +39,36 @@
         <p class="font-italic">
               <a href="{% url 'photo:album_detail' object.album.id %}"> {{ object.album.name }}</a>
         </p>
+        <button onclick="pay()">결제하기</button>
     </ul>
 </div>
+<script>
+function pay(){
+    var price = $('.price').attr('data-price');
 
+    let param ={
+        'price': price,
+
+    };
+
+    $.ajax({
+        url : {% url 'photo:addprice' %},
+        type: 'POST',
+        datatype: 'json',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(param),
+        headers: {
+            'X-CSRFTOKEN' : '{{ csrf_token }}'
+        },
+        success : function(data) {
+        console.log("add price 성공");
+        },
+        error: function(data) {
+        alert("error= addprice 실패");
+        }
+    });
+
+};
+</script>
 {% endblock %}
 
