@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.views.generic import ListView, DetailView
-from photo.models import Album, Photo, Test
+from photo.models import Album, Photo, Test ,Basket
 from django.shortcuts import render
 import json
 
@@ -33,3 +33,17 @@ def addprice(request):
     test.save()
 
     return HttpResponse("true", content_type='application/json')
+
+
+def addmoney(request):
+    print(request.body)
+    jsonObject = json.loads(request.body)
+    basket = Basket()
+    basket.money = jsonObject["money"]
+    basket.save()
+
+
+
+
+
+

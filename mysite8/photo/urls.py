@@ -10,6 +10,7 @@ urlpatterns = [
     path('album/<int:pk>/', DetailView.as_view(model=Album), name='album_detail'),
     path('photo/<int:pk>/', DetailView.as_view(model=Photo), name='photo_detail'),
     path('addprice/', views.addprice, name='addprice'),
+    path('addmoney/', views.addmoney, name='addmoney'),
 ]
 
 

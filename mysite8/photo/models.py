@@ -44,3 +44,8 @@ class Photo(models.Model):
 class Test(models.Model):
     price = models.CharField(max_length=250, default=0)
     # price = models.IntegerField(max_length=250, default=0)
+
+
+
+class Basket(models.Model):
+    money = models.IntegerField(max_length=250, default=0)
