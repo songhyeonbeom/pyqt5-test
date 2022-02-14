@@ -20,8 +20,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'user.apps.UserConfig',
-    # 'common.apps.CommonConfig',
+    'cart.apps.CartConfig',
+    # 'user.apps.UserConfig',
+    'common.apps.CommonConfig',
     'photo.apps.PhotoConfig',
     'django.contrib.admin',
     'django.contrib.auth',

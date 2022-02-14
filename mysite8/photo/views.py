@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.views.generic import ListView, DetailView
-from photo.models import Album, Photo, Test ,Basket
+from photo.models import Album, Photo, Test, Basket
 from django.shortcuts import render
 import json
 
