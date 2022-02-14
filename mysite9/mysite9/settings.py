@@ -55,7 +55,7 @@ ROOT_URLCONF = 'mysite9.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.paht.join(BASE_DIR, 'shop', 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
