@@ -1,10 +1,25 @@
+{% load staticfiles %}
+<header>
+    <center>
+        <img src="{% static 'img/logo.png' %}" alt="Perfect Cushion Shop">
+    </center>
+</header>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="{% block metadescription %}{% endblock %}">
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-$END$
+    <div>
+        {% include 'header.html' %}
+        {% include 'nav.html' %}
+        {% block content %}
+        {% endblock %}
+    </div>
+        {% include 'footer.html' %}
 </body>
 </html>
+
+
