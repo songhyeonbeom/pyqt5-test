@@ -1,5 +1,7 @@
 # Lab 2 Linear Regression
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 tf.set_random_seed(777)  # for reproducibility
 
 # Try to find values for W and b to compute Y = W * X + b

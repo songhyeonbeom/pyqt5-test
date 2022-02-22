@@ -1,5 +1,7 @@
 # Lab 5 Logistic Regression Classifier
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 tf.set_random_seed(777)  # for reproducibility
 
 x_data = [[1, 2],

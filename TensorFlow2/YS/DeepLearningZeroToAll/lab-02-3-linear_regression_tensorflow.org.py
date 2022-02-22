@@ -1,5 +1,6 @@
 # From https://www.tensorflow.org/get_started/get_started
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 # training data
 x_train = [1, 2, 3, 4]
