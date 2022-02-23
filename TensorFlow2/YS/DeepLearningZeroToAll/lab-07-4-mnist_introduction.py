@@ -1,7 +1,8 @@
 # Lab 7 Learning rate and Evaluation
-import tensorflow as tf
 import matplotlib.pyplot as plt
 import random
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 tf.set_random_seed(777)  # for reproducibility
 
