@@ -5,8 +5,8 @@ import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 
 tf.set_random_seed(777)  # for reproducibility
-
-from tensorflow.examples.tutorials.mnist import input_data
+import input_data
+# from tensorflow.examples.tutorials.mnist import input_data
 
 # Check out https://www.tensorflow.org/get_started/mnist/beginners for
 # more information about the mnist dataset
