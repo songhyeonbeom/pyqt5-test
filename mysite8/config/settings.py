@@ -20,7 +20,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'cart.apps.CartConfig',
+    'cart.apps.CartConfig',
     # 'user.apps.UserConfig',
     'common.apps.CommonConfig',
     'photo.apps.PhotoConfig',
