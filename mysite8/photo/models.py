@@ -22,7 +22,6 @@ class Album(models.Model):
 class Photo(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     title = models.CharField('상품 제목', max_length=30)
-    money = models.CharField('상품 가격', max_length=10)
     season = models.CharField('상품 시즌', max_length=20)
     style = models.TextField('스타일', blank=True)
     size = models.TextField('사이즈', blank=True)
@@ -31,6 +30,7 @@ class Photo(models.Model):
     upload_dt = models.DateTimeField('UPLOAD DATE', auto_now_add=True)
     stock = models.IntegerField('재고 수량')
     owner = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name='작성자', blank=True, null=True)
+    money = models.CharField('상품 가격', max_length=10)
 
     class Meta:
         ordering = ('title',)
