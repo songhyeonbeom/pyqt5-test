@@ -44,8 +44,8 @@ urlpatterns = [
 
 
     path('', views.allPhotoAB, name='allPhotoAB'),
-    path('<slug:c_slug>/', views.allPhotoAB, name = 'photos_by_album'),
-    path('<slug:c_slug>/<slug:photo_slug>', views.PhotoABDetail, name = 'PhotoABDetail'),
+    path('<id:c_slug>/', views.allPhotoAB, name = 'photos_by_album'),
+    path('<id:c_slug>/<id:photo_slug>', views.PhotoABDetail, name = 'PhotoABDetail'),
 
 
 ]

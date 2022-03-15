@@ -32,9 +32,9 @@
             {% for photo in photos.object_list %}
             <div class="my_bottom_margin col-9 col-sm-6 col-md-4 col-lg-4">
                 <div class="card text-center" style="width: 18rem;">
-                    <a href = "{{photo.get_absolute_url}}"><img class="card-img-top my_image" src = "{{photo.image.url}}" alt = "{{photo.name}}"></a>
+                    <a href = "{{photo.get_absolute_url}}"><img class="card-img-top my_image" src = "{{photo.image.url}}" alt = "{{photo.title}}"></a>
                     <div class="card-body">
-                        <h4>{{photo.name}}</h4>
+                        <h4>{{photo.title}}</h4>
                     </div>
                 </div>
             </div>

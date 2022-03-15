@@ -13,11 +13,11 @@ class Album(models.Model):
     class Meta:
         ordering = ('name',)
 
-    def __str__(self):
-        return self.name
-
     def get_absolute_url(self):
-        return reverse('photo:album_detail', args=(self.id,))
+        return reverse('photo:photo_by_album', args = [self.id])
+
+    def __str__(self) :
+        return '{}'.format(self.name)
 
 
 class Photo(models.Model):
@@ -37,5 +37,5 @@ class Photo(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('photo:photo_detail', args=(self.id,))
+        return reverse('photo:photo_detail', args = [self.album.id, self.id])
 
