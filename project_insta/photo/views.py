@@ -10,6 +10,24 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from photo.forms import PhotoInlineFormSet
 from config.views import OwnerOnlyMixin
 
+
+from django.shortcuts import render, get_object_or_404
+from .models import Album, Photo
+from django.core.paginator import Paginator, EmptyPage, InvalidPage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class AlbumLV(ListView):
     model = Album
 
@@ -119,3 +137,42 @@ class AlbumDelV(OwnerOnlyMixin, DeleteView):
     success_url = reverse_lazy('photo:index')
 
 
+
+
+
+
+
+
+
+
+# Create your views here.
+def allPhotoAB(request, c_slug=None):
+    c_page = None;
+    photos_list = None;
+    if c_slug != None:
+        c_page = get_object_or_404(Album, slug=c_slug)
+        photos_list = Photo.objects.filter(Album=c_page)
+    else:
+        photos_list = Photo.objects.all()
+
+    paginator = Paginator(photos_list, 6)
+    try:
+        page = int(request.GET.get('page', 1))
+    except:
+        page = 1
+
+    try:
+        photos = paginator.page(page)
+    except(EmptyPage, InvalidPage):
+        photos = paginator.page(paginator.num_pages)
+
+    return render(request, 'photo/album.html', {'album': c_page, 'photos': photos})
+
+
+def PhotoABDetail(request, c_slug, photo_slug):
+    try:
+        photo = Photo.objects.get(Album__slug = c_slug, slug = photo_slug)
+    except Exception as e :
+        raise e
+
+    return render(request, 'photo/photo.html', {'photo' : photo})

@@ -5,8 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6774cd00-583f-4e88-9378-26055f3a845d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../project_insta/common/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_insta/common/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_insta/templates/common/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_insta/templates/common/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_insta/templates/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_insta/templates/navbar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_insta/templates/photo/album.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_insta/templates/photo/photo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/config/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/config/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/config/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/photo/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/photo/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/photo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/photo/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/photo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/photo/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/photo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/photo/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/templates/photo/album_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/templates/photo/album_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,5 +62,16 @@
       <updated>1647234251849</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -7,15 +7,23 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="{% url 'shop:allProdCat' %}">All Products</a>
+
+
         {% for cat in links %}
         <a class="nav-link" href="{{cat.get_url}}">{{cat.name}}</a>
         {% endfor %}
+
+
       </li>
+
+
       {% if item_count > 0 %}
       <li class="nav-item">
         <a class="nav-link" href = "{% url 'cart:cart_detail' %}"><i class="fas fa-shopping-cart"></i>({{item_count}})</a>
       </li>
       {% endif %}
+
+
       {% if not request.session.user %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'account:register' %}">Sign up</a>

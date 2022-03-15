@@ -28,7 +28,6 @@ class Photo(models.Model):
     upload_dt = models.DateTimeField('UPLOAD DATE', auto_now_add=True)
     owner = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name='OWNER', blank=True, null=True)
 
-
     class Meta:
         ordering = ('title',)
         # db_table- "Photo_table"

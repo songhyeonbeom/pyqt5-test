@@ -4,7 +4,7 @@ from photo import views
 app_name = 'photo'
 urlpatterns = [
     # Example: /photo/
-    path('', views.AlbumLV.as_view(), name='index'),
+    path('yd', views.AlbumLV.as_view(), name='index'),
 
     # Example: /photo/album/, same as /photo/
     path('album', views.AlbumLV.as_view(), name='album_list'),
@@ -39,4 +39,16 @@ urlpatterns = [
     # Example: /photo/photo/99/delete/
     path('photo/<int:pk>/delete/', views.PhotoDelV.as_view(), name='photo_delete'),
 
+
+
+
+
+    path('', views.allPhotoAB, name='allPhotoAB'),
+    path('<slug:c_slug>/', views.allPhotoAB, name = 'photos_by_album'),
+    path('<slug:c_slug>/<slug:photo_slug>', views.PhotoABDetail, name = 'PhotoABDetail'),
+
+
 ]
+
+
+

@@ -24,6 +24,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('photo/', include('photo.urls')),
+    path('common/', include('common.urls')),
+    path('', include('photo.urls')),  # '/' 에 해당되는 path
 ]
 
 if settings.DEBUG:
