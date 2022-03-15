@@ -4,14 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6774cd00-583f-4e88-9378-26055f3a845d" name="Changes" comment="">
+    <list default="true" id="6774cd00-583f-4e88-9378-26055f3a845d" name="Changes" comment="Changes">
+      <change beforePath="$PROJECT_DIR$/.idea/Shoppingmall-Prj.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Shoppingmall-Prj.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/.idea/project_insta.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/.idea/project_insta.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/config/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/photo/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/photo/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/photo/migrations/0001_initial.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../project_insta/photo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/photo/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../project_insta/photo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/photo/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_insta/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/templates/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_insta/templates/photo/album.html" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/templates/photo/album.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_insta/photo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_insta/photo/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +38,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../project_insta" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -57,5 +62,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

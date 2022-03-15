@@ -151,7 +151,7 @@ def allPhotoAB(request, c_slug=None):
     photos_list = None;
     if c_slug != None:
         c_page = get_object_or_404(Album, slug=c_slug)
-        photos_list = Photo.objects.filter(Album=c_page)
+        photos_list = Photo.objects.filter(album=c_page)
     else:
         photos_list = Photo.objects.all()
 
@@ -171,7 +171,7 @@ def allPhotoAB(request, c_slug=None):
 
 def PhotoABDetail(request, c_slug, photo_slug):
     try:
-        photo = Photo.objects.get(Album__slug = c_slug, slug = photo_slug)
+        photo = Photo.objects.get(album__slug = c_slug, slug = photo_slug)
     except Exception as e :
         raise e
 
