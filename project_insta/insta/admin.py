@@ -11,14 +11,11 @@ class PhotoInline(admin.StackedInline):
 @admin.register(Album)
 class AlbumAdmin(admin.ModelAdmin):
     inlines = (PhotoInline,)
-    list_display = ('id', 'name', 'description', 'slug')
-    prepopulated_fields = {'slug' : ('name',)}
+    list_display = ('id', 'name', 'description',)
 
 
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'upload_dt', 'slug')
-    prepopulated_fields = {'slug' : ('name',)}
-    list_per_page = 20
+    list_display = ('id', 'title', 'upload_dt',)
 

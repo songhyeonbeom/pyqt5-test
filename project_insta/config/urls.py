@@ -31,7 +31,7 @@ urlpatterns = [
     # path('', lambda request: redirect('insta/')),
 
     # path('', include('photo.urls')),  # '/' 에 해당되는 path
-    path('', lambda request: redirect('photo/')),
+    # path('', lambda request: redirect('photo/')),
 
 ]
 
