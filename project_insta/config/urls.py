@@ -18,6 +18,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
 # from pybo.views import base_views
 from django.shortcuts import redirect
 
@@ -25,8 +26,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('insta/', include('insta.urls')),
     path('common/', include('common.urls')),
+
     path('', include('insta.urls')),  # '/' 에 해당되는 path
     # path('', lambda request: redirect('insta/')),
+
+    # path('', include('photo.urls')),  # '/' 에 해당되는 path
+    path('', lambda request: redirect('photo/')),
+
 ]
 
 if settings.DEBUG:
