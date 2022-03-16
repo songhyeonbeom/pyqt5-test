@@ -6,11 +6,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'photo:allPhotoAB' %}">All Photos</a>
+        <a class="nav-link" href="{% url 'insta:allPhotoAB' %}">전체보기</a>
 
 
         {% for cat in links %}
-        <a class="nav-link" href="{{album.get_absolute_url}}">{{album.name}}</a>
+        <a class="nav-link" href="{{ cat.get_absolute_url }}">{{cat.name}}</a>
         {% endfor %}
 
 
@@ -20,14 +20,14 @@
 
       {% if not request.session.user %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'common:signup' %}">Sign up</a>
+          <a class="nav-link" href="{% url 'common:signup' %}">회원가입</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'common:login' %}">Login</a>
+          <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
         </li>
       {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'common:logout' %}">Logout</a>
+          <a class="nav-link" href="{% url 'common:logout' %}">로그아웃</a>
         </li>
       {% endif %}
 

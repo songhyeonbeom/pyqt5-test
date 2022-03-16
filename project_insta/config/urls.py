@@ -1,4 +1,4 @@
-"""config URL Configuration
+"""config URL Configurationtitle
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -19,13 +19,14 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 # from pybo.views import base_views
-
+from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('photo/', include('photo.urls')),
+    path('insta/', include('insta.urls')),
     path('common/', include('common.urls')),
-    path('', include('photo.urls')),  # '/' 에 해당되는 path
+    path('', include('insta.urls')),  # '/' 에 해당되는 path
+    # path('', lambda request: redirect('insta/')),
 ]
 
 if settings.DEBUG:

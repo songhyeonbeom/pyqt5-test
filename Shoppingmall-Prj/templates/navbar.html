@@ -9,8 +9,8 @@
         <a class="nav-link" href="{% url 'shop:allProdCat' %}">All Products</a>
 
 
-        {% for cat in links %}
-        <a class="nav-link" href="{{cat.get_url}}">{{cat.name}}</a>
+        {% for cat1 in links %}
+        <a class="nav-link" href="{{cat1.get_url}}">{{cat1.name}}</a>
         {% endfor %}
 
 
