@@ -1,0 +1,24 @@
+urls.py - navbar.html - context_processors.py - models.py - views.py - album_detail.html
+
+1. navbar.html 에서 12~14줄
+만들어진 links 가 있음. 데이터가 들어있다. 
+get_absolute_url 로 정의된 데이터 덩어리를 cat 에다가 하나씩 뺀다.
+그럼 links는 어디에 걸려있는걸까.
+insta 안에 context_processors.py에 def menu_links 안에
+links 가 Album 에 걸려있다
+그럼 이제 insta - models.py 에 모델을 확인해보면?
+class Album 하위 def get_absolute_url 이라고 정의가 되어진게 있다.
+안에 내용을 보자면 insta:album_detail 이라는 url을 따라가게 되어있다.
+class Album 의 id값을 가지고.!
+--------------------------------------------------------------------------------------------
+그럼이제 다시 insta app의 urls.py 에서 album_detail 이 뭐라 표시되어있는지 찾는다.
+path가 걸려있다.
+    path('photo/<int:pk>/', views.AlbumDV.as_view(), name='album_detail'),
+
+
+근데 지금 이해가 안되는 부분이,
+위에 저렇게 설정해서 "우와 카테고리에 id 로 추적해서 그 id의 name 이 추출되어 보이는 네비바
+근데 그 네비바를 누르면? templates - insta - album_detail.html 로 연결된다.
+
+이 부분이 이해 해야되는 부분,
+ 

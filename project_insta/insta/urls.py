@@ -43,7 +43,7 @@ urlpatterns = [
 
 
 
-    # Example: /insta/album/99/
+    # Example: /photo/album/99/
     path('photo/<int:pk>/', views.AlbumDV.as_view(), name='album_detail'),
 
 

@@ -143,7 +143,7 @@ def allPhotoAB(request, c_slug=None):
     else:
         photos_list = Photo.objects.all()
 
-    paginator = Paginator(photos_list, 6)
+    paginator = Paginator(photos_list, 9)
     try:
         page = int(request.GET.get('page', 1))
     except:
