@@ -18,16 +18,23 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
+
 from django.shortcuts import redirect
 # from pybo.views import base_views
 from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('', RedirectView.as_view(url='/insta/', permanent=True)),
     path('insta/', include('insta.urls')),
+
+    # path('', include('insta.urls')),  # '/' 에 해당되는 path
+
     path('common/', include('common.urls')),
 
-    path('', include('insta.urls')),  # '/' 에 해당되는 path
+
     # path('', lambda request: redirect('insta/')),
 
     # path('', include('photo.urls')),  # '/' 에 해당되는 path

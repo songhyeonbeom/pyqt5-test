@@ -22,3 +22,61 @@ path가 걸려있다.
 
 이 부분이 이해 해야되는 부분,
  
+ =====================================================================
+ 
+ navbar.html 에서 links 라는거에 데이터가 들어있음.
+ 왜
+ context_processors.py에 links 가 
+ models.py에 class Album의 all 오브젝트라고 설정을 해놓음.
+ cat 이라고 만든거에 링크스에서 하나씩 빠져나오는 {} 실행
+ 거기서 name 을 추출해서 보이는거고,
+ href 로 하이퍼링크를 걸어준다.
++++++++++++++++++++++++++++++
+ get_absolute_url  = album 에서 뭐라되어있는지 본다.
+         return reverse('insta:album_detail', args = [self.id])
+이렇게 걸려있고.
+urls.py 로 가서 어떻게 표시되는가 확인한다.
+    path('photo/<int:pk>/', views.AlbumDV.as_view(), name='album_detail'),
+네임이 앨범_디테일로 되어있는거가 보니까 
+주소는 저렇게 보여지게 하겠다. photo/pk로 설정되어있는 id값
+views. 안에 저기 지정해준 함수를 실행하겠다.
+이제 저 앨범 디테일에 가보자.
+조또 아무것도 없음 걍
+모델 앨범에 연결되어있음.
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

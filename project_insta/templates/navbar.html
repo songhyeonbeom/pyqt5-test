@@ -9,9 +9,11 @@
         <a class="nav-link" href="{% url 'insta:allPhotoAB' %}">전체보기</a>
 
 
+
         {% for cat in links %}
         <a class="nav-link" href="{{ cat.get_absolute_url }}">{{cat.name}}</a>
         {% endfor %}
+
 
 
       </li>
