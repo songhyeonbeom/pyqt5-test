@@ -24,7 +24,7 @@ from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('insta/', include('insta.urls')),
+    path('insta/', include('insta.urls')),
     path('common/', include('common.urls')),
 
     path('', include('insta.urls')),  # '/' 에 해당되는 path
