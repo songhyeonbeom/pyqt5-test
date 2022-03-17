@@ -20,6 +20,16 @@
 
 <body>
 
+    <!-- jQuery JS -->
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- 자바스크립트 Start -->
+    {% block script %}
+    {% endblock %}
+    <!-- 자바스크립트 End -->
+
+
     <div class = "container">
         {% include 'navbar.html' %}
         <br>
@@ -29,16 +39,6 @@
         {% include 'footer.html' %}
 
 
-
-
-    <!-- jQuery JS -->
-    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
-    <!-- Bootstrap JS -->
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <!-- 자바스크립트 Start -->
-    {% block script %}
-    {% endblock %}
-    <!-- 자바스크립트 End -->
 
 
 

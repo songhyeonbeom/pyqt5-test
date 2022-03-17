@@ -1,5 +1,5 @@
 from django.urls import path
-from insta import views
+from insta import views, vote_views
 
 app_name = 'insta'
 urlpatterns = [
@@ -36,7 +36,7 @@ urlpatterns = [
 
     path('album/<int:pk>/', views.AlbumDV.as_view(), name='album_detail'),
 
-    path('photo/<int:pk>/', views.PhotoDV.as_view(), name='photo_detail'),
+    path('photo/<int:pk>/', views.PhotoDV, name='photo_detail'),
 
 
 
@@ -46,6 +46,7 @@ urlpatterns = [
 
     path('id:c_slug/id:photo_slug', views.PhotoABDetail, name = 'PhotoABDetail'),
 
+    path('vote/photo/<int:photo_id>/', vote_views.vote_photo, name='vote_photo'),
 
 ]
 

@@ -14,6 +14,8 @@ from config.views import OwnerOnlyMixin
 from django.shortcuts import render, get_object_or_404
 from insta.models import Album, Photo
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
+from django.contrib.auth.decorators import login_required
+
 
 
 class AlbumLV(ListView):
@@ -23,7 +25,7 @@ class AlbumLV(ListView):
 class AlbumDV(DetailView):
     model = Album
 
-
+@login_required(login_url='common:login')
 class PhotoDV(DetailView):
     model = Photo
 
@@ -164,3 +166,25 @@ def PhotoABDetail(request, c_slug, photo_slug):
         raise e
 
     return render(request, 'insta/insta.html', {'insta' : photo})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

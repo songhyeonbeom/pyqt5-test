@@ -4,27 +4,62 @@
 
 {% block content %}
 
-    <h2 class="mt-5">{{ object.title }}</h2> 
-    
-    <div class="row"> 
-        <div class="col-md-9">
-            <a href="{{ object.image.url }}">
-                <img src="{{ object.image.url }}" style="width: 100%;">
-            </a>
-        </div>
-    
-        <ul class="col-md-3 mt-3">
-            <li class="h5">Photo Description</li>
-                {% if object.description %}<p>{{ object.description|linebreaks }}</p>
-                {% else %}<p>(blank)</p>{% endif %}
-            <li class="h5">Date Uploaded</li>
-                <p class="font-italic">{{ object.upload_dt }}</p>
-<!--            <li class="h5">Album Name</li>-->
-<!--                <p class="font-italic">-->
-<!--                    <a href="{% url 'insta:album_detail' object.album.id %}"> {{ object.album.name }}</a>-->
-<!--                </p>-->
-        </ul>
+<h2 class="mt-5">{{ object.title }}</h2>
+
+<div class="row">
+    <div class="col-md-9">
+        <a href="{{ object.image.url }}">
+            <img src="{{ object.image.url }}" style="width: 100%;">
+        </a>
     </div>
 
+
+    <div class="row my-3">
+        <div class="col-1"> <!-- 추천영역 -->
+            <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{photo.voter.count}}</div>
+            <a href="#" data-uri="{% url 'insta:vote_photo' photo.id  %}"
+               class="recommend btn btn-sm btn-secondary btn-block my-1">추천</a>
+        </div>
+        <div class="col-11">
+            <!-- 질문영역 -->
+            <!-- 기존내용 -->
+
+
+            <ul class="col-md-3 mt-3">
+                <li class="h5">Photo Description</li>
+                {% if object.description %}<p>{{ object.description|linebreaks }}</p>
+                {% else %}<p>(blank)</p>{% endif %}
+                <li class="h5">Date Uploaded</li>
+                <p class="font-italic">{{ object.upload_dt }}</p>
+                <!--            <li class="h5">Album Name</li>-->
+                <!--                <p class="font-italic">-->
+                <!--                    <a href="{% url 'insta:album_detail' object.album.id %}"> {{ object.album.name }}</a>-->
+                <!--                </p>-->
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
+{% block script %}
+<script type='text/javascript'>
+    $(document).ready(function () {
+        $(".delete").on('click', function () {
+            if (confirm("정말로 삭제하시겠습니까?")) {
+                location.href = $(this).data('uri');
+            }
+        });
+        $(".recommend").on('click', function () {
+            if (confirm("정말로 추천하시겠습니까?")) {
+                location.href = $(this).data('uri');
+            }
+        });
+
+
+    });
+
+
+
+
+</script>
+{% endblock %}
