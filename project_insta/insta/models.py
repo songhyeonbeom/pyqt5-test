@@ -30,7 +30,7 @@ class Photo(models.Model):
     image = ThumbnailImageField('IMAGE', upload_to='insta/%Y/%m')
     upload_dt = models.DateTimeField('UPLOAD DATE', auto_now_add=True)
     owner = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name='OWNER', blank=True, null=True)
-    voter = models.ManyToManyField(User)  # 추천인 추가
+
 
 
 
