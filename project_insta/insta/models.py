@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 # Create your models here.
 from insta.fields import ThumbnailImageField
+from django.contrib.auth.models import User
 
 
 class Album(models.Model):
@@ -21,6 +22,7 @@ class Album(models.Model):
         return '{}'.format(self.name)
 
 
+
 class Photo(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     title = models.CharField('TITLE', max_length=30)
@@ -28,6 +30,9 @@ class Photo(models.Model):
     image = ThumbnailImageField('IMAGE', upload_to='insta/%Y/%m')
     upload_dt = models.DateTimeField('UPLOAD DATE', auto_now_add=True)
     owner = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name='OWNER', blank=True, null=True)
+    voter = models.ManyToManyField(User)  # 추천인 추가
+
+
 
     class Meta:
         ordering = ('title',)
