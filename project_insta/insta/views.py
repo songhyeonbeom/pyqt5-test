@@ -1,7 +1,4 @@
-from django.shortcuts import render
-
 from django.views.generic import ListView, DetailView
-from insta.models import Album, Photo
 from django.views.generic import CreateView, UpdateView, DeleteView
 
 from django.shortcuts import redirect
