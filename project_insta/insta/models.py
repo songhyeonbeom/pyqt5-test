@@ -28,7 +28,8 @@ class Photo(models.Model):
     description = models.TextField('Photo Description', blank=True)
     image = ThumbnailImageField('IMAGE', upload_to='insta/%Y/%m')
     upload_dt = models.DateTimeField('UPLOAD DATE', auto_now_add=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owner_photo', verbose_name='OWNER', blank=True, null=True)
+
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owner_photo')
     voter = models.ManyToManyField(User, related_name='voter_photo')
 
 
@@ -42,3 +43,20 @@ class Photo(models.Model):
 
     def get_absolute_url(self):
         return reverse('insta:photo_detail', args = [self.id])
+
+
+
+
+
+
+
+
+
+class Answer(models.Model):
+    photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
+    content = models.TextField()
+    create_date = models.DateTimeField()
+
+
+
+

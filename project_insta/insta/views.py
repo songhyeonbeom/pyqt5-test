@@ -15,6 +15,11 @@ from django.contrib.auth.decorators import login_required
 
 
 
+
+
+
+
+
 class AlbumLV(ListView):
     model = Album
 
@@ -22,7 +27,6 @@ class AlbumLV(ListView):
 class AlbumDV(DetailView):
     model = Album
 
-@login_required(login_url='common:login')
 class PhotoDV(DetailView):
     model = Photo
 

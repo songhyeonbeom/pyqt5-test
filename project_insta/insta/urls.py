@@ -1,8 +1,20 @@
 from django.urls import path
 from insta import views, vote_views
 
+
+
 app_name = 'insta'
 urlpatterns = [
+
+
+    path('', views.allPhotoAB, name='allPhotoAB'),
+
+    path('album/<int:pk>/', views.AlbumDV.as_view(), name='album_detail'),
+
+    path('photo/<int:pk>/', views.PhotoDV.as_view(), name='photo_detail'),
+
+
+
 
     # Example: /insta/album/add/
     path('album/add/', views.AlbumPhotoCV.as_view(), name='album_add'),
@@ -32,21 +44,15 @@ urlpatterns = [
 
 
 
-    path('', views.allPhotoAB, name='allPhotoAB'),
-
-    path('album/<int:pk>/', views.AlbumDV.as_view(), name='album_detail'),
-
-    path('photo/<int:pk>/', views.PhotoDV, name='photo_detail'),
+    # path('photo/<int:pk>/', views.PhotoDV, name='photo_detail'),
 
 
 
 
 
+    # path('id:c_slug/id:photo_slug', views.PhotoABDetail, name = 'PhotoABDetail'),
 
-
-    path('id:c_slug/id:photo_slug', views.PhotoABDetail, name = 'PhotoABDetail'),
-
-    path('vote/photo/<int:photo_id>/', vote_views.vote_photo, name='vote_photo'),
+    # path('vote/photo/<int:photo_id>/', vote_views.vote_photo, name='vote_photo'),
 
 ]
 
