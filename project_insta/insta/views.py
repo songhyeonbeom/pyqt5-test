@@ -184,8 +184,3 @@ def PhotoABDetail(request, c_slug, photo_slug):
 
 
 
-
-
-
-
-

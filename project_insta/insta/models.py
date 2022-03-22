@@ -1,8 +1,9 @@
 from django.db import models
 from django.urls import reverse
-# Create your models here.
 from insta.fields import ThumbnailImageField
 from django.contrib.auth.models import User
+
+
 
 class Album(models.Model):
     #id 프라이머리키
@@ -48,14 +49,17 @@ class Photo(models.Model):
 
 
 
-
-
-
-
 class Answer(models.Model):
     photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
     content = models.TextField()
     create_date = models.DateTimeField()
+
+
+
+
+
+
+
 
 
 
