@@ -1,13 +1,12 @@
 from django.contrib.auth import login
 from django.contrib.sites import requests
-from django.http import HttpResponse
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 import requests
 from django.contrib.auth.models import User
 from shop.models import Customer, Order
 from board.models import Question
 from django.contrib import messages
-from common.forms import UserForm
+from common import UserForm
 from django.core.mail import send_mail
 
 

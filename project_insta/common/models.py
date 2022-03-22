@@ -1,31 +1,25 @@
 from django.db import models
 from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
 
-
-
 class UserManager(BaseUserManager):
-    def create_user(self, username, email, date_of_birth, address, password=None):
+    def create_user(self, email, date_of_birth, password=None):
         if not email:
-            raise ValueError('Users must have an email address')
+            raise ValueError('사용자는 이메일 주소가 있어야 합니다.')
 
         user = self.model(
-            username = username,
             email=self.normalize_email(email),
             date_of_birth=date_of_birth,
-            address = address,
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, email, date_of_birth, address, password):
+    def create_superuser(self, email, date_of_birth, password):
         user = self.create_user(
-            username,
             email,
             password=password,
             date_of_birth=date_of_birth,
-            address = address,
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -33,20 +27,19 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    username = models.CharField(verbose_name='username', max_length=20, unique=True)
     email = models.EmailField(
         verbose_name='email',
         max_length=255,
+        unique=True,
     )
     date_of_birth = models.DateField()
-    address = models.CharField(max_length=200)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['username', 'date_of_birth' ,'address', ]
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['date_of_birth']
 
     def __str__(self):
         return self.email
@@ -60,3 +53,10 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+
+
+
+
+
+
+

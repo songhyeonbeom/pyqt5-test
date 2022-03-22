@@ -32,8 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'insta.apps.InstaConfig',
-
     'common.apps.CommonConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -60,7 +60,7 @@ INTERNAL_IPS = ('127.0.0.1')
 
 ROOT_URLCONF = 'config.urls'
 
-#AUTH_USER_MODEL = 'common.User'
+
 
 TEMPLATES = [
     {
