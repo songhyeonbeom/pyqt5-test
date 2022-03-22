@@ -1,13 +1,14 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from common import UserForm
+from common.models import User
+
 from django.urls import reverse
 def signup(request):
     """
     계정생성
     """
     if request.method == "POST":
-        form = UserForm(request.POST)
+        form = User(request.POST)
         if form.is_valid():
             form.save()
             # first_name = form.cleaned_data.get('first_name')
@@ -18,13 +19,12 @@ def signup(request):
             login(request, user)  # 로그인
             return redirect(reverse('insta:allPhotoAB'))
     else:
-        form = UserForm()
+        form = User()
 
 
 
 
     return render(request, 'common/signup.html', {'form': form})
-
 
 
 

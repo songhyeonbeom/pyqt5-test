@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
 
+
 class UserManager(BaseUserManager):
     def create_user(self, email, date_of_birth, password=None):
         if not email:
-            raise ValueError('사용자는 이메일 주소가 있어야 합니다.')
+            raise ValueError('Users must have an email address')
 
         user = self.model(
             email=self.normalize_email(email),
@@ -53,10 +54,3 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
-
-
-
-
-
-
-
