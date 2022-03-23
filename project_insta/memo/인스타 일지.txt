@@ -96,6 +96,18 @@ python manage.py runserver
 
 
 
+---------------------------------------------------------------------------
+
+
+email
+
+date of birth
+
+password
+
+password
+
+
 
 
 
