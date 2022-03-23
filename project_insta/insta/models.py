@@ -9,7 +9,7 @@ class Album(models.Model):
     #id 프라이머리키
     name = models.CharField('NAME', max_length=30)
     description = models.CharField('One Line Description', max_length=100, blank=True)
-    owner = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name='OWNER', blank=True, null=True)
+    owner = models.ForeignKey('common.User', on_delete=models.CASCADE, verbose_name='OWNER', blank=True, null=True)
 
 
     class Meta:
