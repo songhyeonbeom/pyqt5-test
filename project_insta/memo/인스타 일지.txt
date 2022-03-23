@@ -109,8 +109,19 @@ password
 
 
 
+아이디 		username  	type="text"
+비번		password1	type="password"	
+비번재확인	password2	type="password"
+
+이름		realname		type="text"
+생년월일		birth_date	type="date"
+성별		(찾는중)
+본인확인 이메일	email		type="email"
+휴대전화		phone		type="tel"
 
 
+
+주소
 
 
 

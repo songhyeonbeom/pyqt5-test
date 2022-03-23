@@ -3,13 +3,22 @@ from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, email, password=None):
+    def create_user(self, username, email, realname, birth_date, woman, goman, phone, password=None):
+        if not username:
+            raise ValueError("이름이 있어야된다!")
         if not email:
-            raise ValueError('Users must have an email address')
+            raise ValueError("이메일이 있어야된다!")
+        if not password:
+            raise ValueError("비밀번호 안넣을꺼니!")
 
         user = self.model(
             username=username,
             email=self.normalize_email(email),
+            realname=realname,
+            birth_date=birth_date,
+            woman=woman,
+            goman=goman,
+            phone=phone,
         )
 
         user.set_password(password)
@@ -36,22 +45,23 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    username = models.CharField(
-        verbose_name='username',
-        max_length=20,
-        unique=True,
-    )
-    email = models.EmailField(
-        verbose_name='email',
-        max_length=255,
-    )
+    username = models.CharField(verbose_name='username', max_length=20, unique=True, )
+    email = models.EmailField(verbose_name='email', max_length=255, )
+    realname = models.CharField(verbose_name='realname', max_length=20, )
+    birth_date = models.DateField(verbose_name='birth_date', blank=True, null=True, )
+    woman = models.BooleanField(verbose_name='WOMAN', default=False, )
+    goman = models.BooleanField(verbose_name='GOMAN', default=False, )
+    phone = models.TextField(verbose_name='phone', max_length=11, )
+
+
+
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
     objects = UserManager()
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+    REQUIRED_FIELDS = ['realname']
 
     def __str__(self):
         return self.username
