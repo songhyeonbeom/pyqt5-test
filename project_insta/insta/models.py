@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from insta.fields import ThumbnailImageField
-from django.contrib.auth.models import User
+from common.models import User
 
 
 
