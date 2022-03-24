@@ -12,6 +12,7 @@ class PhotoInline(admin.StackedInline):
 class AlbumAdmin(admin.ModelAdmin):
     inlines = (PhotoInline,)
     list_display = ('id', 'name', 'description',)
+    search_fields = ['name']
 
 
 
