@@ -10,6 +10,7 @@ urlpatterns = [
     path('', views.allPhotoAB, name='allPhotoAB'),
 
     path('album/<int:pk>/', views.AlbumDV.as_view(), name='album_detail'),
+    # path('<slug:c_slug>/', views.allPhotoAB, name='album_detail'),
 
     path('photo/<int:pk>/', views.PhotoDV.as_view(), name='photo_detail'),
 

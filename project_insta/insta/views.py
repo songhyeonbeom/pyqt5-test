@@ -138,12 +138,16 @@ class AlbumDelV(OwnerOnlyMixin, DeleteView):
 
 # Create your views here.
 def allPhotoAB(request, c_slug=None):
-    c_page = None;
-    photos_list = None;
+    c_page = None
+    photos_list = None
     if c_slug != None:
-        c_page = get_object_or_404(Album, slug=c_slug)
-        photos_list = Photo.objects.filter(album=c_page)
+        print(c_slug, "22222222")
+        c_page = get_object_or_404(Album, slug = c_slug)
+        # photos_list = Photo.objects.filter(album = c_page)
+        photos_list = Photo.objects.order_by('-upload_dt')
+
     else:
+        print(c_slug, "11111111111")
         # photos_list = Photo.objects.all()  #원래있던 가나다 순 올포토 보이기
         photos_list = Photo.objects.order_by('-upload_dt')
         #order_by / 정렬을 하겠다 (괄호안의 데이터 값으로 마이너스 기호 있고없고 정렬하겠다.)
