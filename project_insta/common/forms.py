@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-
+from django.forms import ModelForm, TextInput, EmailInput, NumberInput
 from .models import User
 
 
@@ -11,7 +11,8 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'realname', 'birth_date', 'woman', 'goman', 'phone', )
+        fields = ('username', 'email', 'realname', 'birth_date', 'gender', 'phone', 'gender2', )
+
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -33,8 +34,9 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'realname', 'birth_date', 'woman', 'goman', 'phone',
-                  'password', 'is_active', 'is_admin')
+        fields = ('username', 'email', 'realname', 'birth_date', 'gender', 'phone',
+                  'gender2', 'password', 'is_active', 'is_admin')
+
 
     def clean_password(self):
         return self.initial["password"]

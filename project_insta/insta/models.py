@@ -34,6 +34,8 @@ class Photo(models.Model):
     voter = models.ManyToManyField(User, related_name='voter_photo')
 
 
+
+
     class Meta:
         ordering = ('title',)
         # db_table- "Photo_table"

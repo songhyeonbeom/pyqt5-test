@@ -3,7 +3,7 @@ from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, email, realname, birth_date, woman, goman, phone, password=None):
+    def create_user(self, username, email, realname, birth_date, gender, phone, gender2, password=None):
         if not username:
             raise ValueError("이름이 있어야된다!")
         if not email:
@@ -16,16 +16,16 @@ class UserManager(BaseUserManager):
             email=self.normalize_email(email),
             realname=realname,
             birth_date=birth_date,
-            woman=woman,
-            goman=goman,
+            gender=gender,
             phone=phone,
+            gender2=gender2,
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, email, password):
+    def create_user2(self, username, email, password=None):
         if not username:
             raise ValueError("이름이 있어야된다!")
         if not email:
@@ -33,8 +33,17 @@ class UserManager(BaseUserManager):
         if not password:
             raise ValueError("비밀번호 안넣을꺼니!")
 
+        user = self.model(
+            username=username,
+            email=self.normalize_email(email),
+        )
 
-        user = self.create_user(
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, username, email, password):
+        user = self.create_user2(
             username,
             email,
             password=password,
@@ -47,12 +56,11 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     username = models.CharField(verbose_name='username', max_length=20, unique=True, )
     email = models.EmailField(verbose_name='email', max_length=255, )
-    realname = models.CharField(verbose_name='realname', max_length=20, )
+    realname = models.CharField(verbose_name='realname', max_length=20, null=True,)
     birth_date = models.DateField(verbose_name='birth_date', blank=True, null=True, )
-    woman = models.BooleanField(verbose_name='WOMAN', default=False, )
-    goman = models.BooleanField(verbose_name='GOMAN', default=False, )
-    phone = models.TextField(verbose_name='phone', max_length=11, )
-
+    phone = models.TextField(verbose_name='phone', max_length=11, null=True,)
+    gender = models.IntegerField(verbose_name='gender', null=True,)
+    gender2 = models.CharField(verbose_name="gender2", max_length=5, null=True,)
 
 
     is_active = models.BooleanField(default=True)
@@ -61,7 +69,7 @@ class User(AbstractBaseUser):
     objects = UserManager()
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['realname']
+    REQUIRED_FIELDS = ['email']
 
     def __str__(self):
         return self.username

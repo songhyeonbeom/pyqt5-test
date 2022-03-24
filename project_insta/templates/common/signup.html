@@ -6,7 +6,7 @@
             <h4>계정생성</h4>
         </div>
         <div class="col-8 text-right">
-<!--            <span>또는 <a href="{% url 'common:login' %}">로그인 하세요.</a></span>-->
+            <!--            <span>또는 <a href="{% url 'common:login' %}">로그인 하세요.</a></span>-->
         </div>
     </div>
     <form method="post" class="post-form" action="{% url 'common:signup' %}">
@@ -43,17 +43,31 @@
         </div>
 
         <div class="form-group">
-            <label for="birth_date">성별</label><br>
+            <label>성별</label><br>
+
             <label for="man">남자</label>
             <input type="radio" name="gender" id="man"
-                   value="{{ form.gender.value|default_if_none:'' }}">
+                   value="{{ form.gender.value|default_if_none:'0' }}">
             <label for="woman">여자</label>
             <input type="radio" name="gender" id="woman"
-                   value="{{ form.gender.value|default_if_none:'' }}">
+                   value="{{ form.gender.value|default_if_none:'1' }}">
             <label for="goman">고자</label>
             <input type="radio" name="gender" id="goman"
-                   value="{{ form.gender.value|default_if_none:'' }}">
+                   value="{{ form.gender.value|default_if_none:'2' }}">
         </div>
+
+
+
+        <div class="form-group">
+            <select name="gender2" id="gender2">
+                <option value="{{ form.gender2.value|default_if_none:'남자' }}" selected>남자</option>
+                <option value="{{ form.gender2.value|default_if_none:'여자' }}" selected>여자</option>
+                <option value="{{ form.gender2.value|default_if_none:'고자' }}" selected>고자</option>
+            </select>
+        </div>
+
+        <br>
+
 
         <div class="form-group">
             <label for="email">이메일</label>
