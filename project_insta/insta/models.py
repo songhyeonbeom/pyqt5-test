@@ -8,7 +8,7 @@ from common.models import User
 class Album(models.Model):
     #id 프라이머리키
     name = models.CharField('NAME', max_length=30)
-    description = models.CharField(max_length=100, blank=True)
+    slug = models.SlugField(max_length=250, unique=True)
     owner = models.ForeignKey('common.User', on_delete=models.CASCADE, verbose_name='OWNER', blank=True, null=True)
 
 
@@ -16,7 +16,7 @@ class Album(models.Model):
         ordering = ('name',)
 
     def get_absolute_url(self):
-        return reverse('insta:album_detail', args = [self.id])
+        return reverse('insta:album_detail', args = [self.slug])
 
     def __str__(self) :
         return '{}'.format(self.name)
@@ -26,6 +26,8 @@ class Album(models.Model):
 class Photo(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     title = models.CharField('TITLE', max_length=30)
+    slug = models.SlugField(max_length=250, unique=True)
+
     description = models.TextField('Photo Description', blank=True)
     image = ThumbnailImageField('IMAGE', upload_to='insta/%Y/%m')
     upload_dt = models.DateTimeField('UPLOAD DATE', auto_now_add=True)

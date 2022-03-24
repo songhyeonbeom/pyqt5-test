@@ -22,18 +22,44 @@
     <div class="row">
         {% for photo in object.photo_set.all %}
 <!--        <div class="col-12 col-sm-12 col-md-12 col-lg-6">-->
-        <div class="col-md-3 mb-5">
-            <div class="thumbnail">
-                <a href="{{ photo.get_absolute_url }}">
-                    <img src="{{photo.image.url}}" style="width: 100%;">
-                </a>
-            </div>
+<!--            <div class="my_bottom_margin col-9 col-sm-6 col-md-4 col-lg-4">-->
+
+
+                <div class="my_bottom_margin col-9 col-sm-6 col-md-4 col-lg-4">
+            <div class="card text-center" style="width: 18rem;">
+                <a href="{{ photo.get_absolute_url }}"><img class="card-img-top my_image" src="{{photo.image.url}}"
+                                                            alt="{{photo.upload_dt}}"></a>
+
             <ul>
-                <li class="font-italic">{{ photo.title }}</li>
-                <li class="font-italic">{{ photo.upload_dt|date:"Y-m-d" }}</li>
+                <div class="card-body">
+                    <h4>{{photo.title}}</h4>
+                </div>
             </ul>
         </div>
+            </div>
         {% endfor %}
     </div>
 
 {% endblock %}
+
+
+
+    <div class="row my_prod_row_class">
+        <div class="mx-auto">
+            <p><a href = "{% url 'photo:allPhotoAB' %}">Home</a> | <a href = "{{photo.album.get_url}}">{{photo.album}}</a> | {{photo.name}}</p>
+        </div>
+        <div class="container">
+            <br>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg6 text-center">
+                    <div style="min-width: 18rem">
+                        <img src = "{{photo.image.url}}" alt = "{{photo.name}}">
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
