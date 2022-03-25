@@ -16,6 +16,48 @@ from django.contrib.auth.decorators import login_required
 
 
 
+# Create your views here.
+def allPhotoAB(request, c_slug=None):
+    c_page = None
+    photos_list = None
+    if c_slug != None:
+        print(c_slug, "22222222")
+        c_page = get_object_or_404(Album, slug = c_slug)
+        photos_list = Photo.objects.filter(album = c_page, ).order_by('-upload_dt')
+        # photos_list = Photo.objects.order_by('-upload_dt')
+
+    else:
+        print(c_slug, "11111111111")
+        # photos_list = Photo.objects.all()  #원래있던 가나다 순 올포토 보이기
+        photos_list = Photo.objects.order_by('-upload_dt')
+        #order_by / 정렬을 하겠다 (괄호안의 데이터 값으로 마이너스 기호 있고없고 정렬하겠다.)
+    paginator = Paginator(photos_list, 9)
+    try:
+        page = int(request.GET.get('page', 1))
+    except:
+        page = 1
+
+    try:
+        photos = paginator.page(page)
+    except(EmptyPage, InvalidPage):
+        photos = paginator.page(paginator.num_pages)
+
+    return render(request, 'insta/album.html', {'album': c_page, 'photos': photos})
+
+
+def PhotoABDetail(request, c_slug, photo_slug):
+    try:
+        photo = Photo.objects.get(album__slug = c_slug, slug = photo_slug)
+    except Exception as e :
+        raise e
+
+    return render(request, 'insta/insta.html', {'insta' : photo})
+
+
+
+
+
+
 
 
 
@@ -133,44 +175,6 @@ class AlbumDelV(OwnerOnlyMixin, DeleteView):
 
 
 
-
-
-
-# Create your views here.
-def allPhotoAB(request, c_slug=None):
-    c_page = None
-    photos_list = None
-    if c_slug != None:
-        print(c_slug, "22222222")
-        c_page = get_object_or_404(Album, slug = c_slug)
-        photos_list = Photo.objects.filter(album = c_page)
-
-    else:
-        print(c_slug, "11111111111")
-        # photos_list = Photo.objects.all()  #원래있던 가나다 순 올포토 보이기
-        photos_list = Photo.objects.order_by('-upload_dt')
-        #order_by / 정렬을 하겠다 (괄호안의 데이터 값으로 마이너스 기호 있고없고 정렬하겠다.)
-    paginator = Paginator(photos_list, 9)
-    try:
-        page = int(request.GET.get('page', 1))
-    except:
-        page = 1
-
-    try:
-        photos = paginator.page(page)
-    except(EmptyPage, InvalidPage):
-        photos = paginator.page(paginator.num_pages)
-
-    return render(request, 'insta/album.html', {'album': c_page, 'photos': photos})
-
-
-def PhotoABDetail(request, c_slug, photo_slug):
-    try:
-        photo = Photo.objects.get(album__slug = c_slug, slug = photo_slug)
-    except Exception as e :
-        raise e
-
-    return render(request, 'insta/insta.html', {'insta' : photo})
 
 
 

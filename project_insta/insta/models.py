@@ -53,13 +53,6 @@ class Photo(models.Model):
 
 
 
-class Answer(models.Model):
-    photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
-    content = models.TextField()
-    create_date = models.DateTimeField()
-
-
-
 
 
 

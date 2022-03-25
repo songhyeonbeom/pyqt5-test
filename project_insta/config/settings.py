@@ -33,6 +33,7 @@ AUTH_USER_MODEL = 'common.User'
 # Application definition
 
 INSTALLED_APPS = [
+    'Ans_Com.apps.AnsComConfig',
     'insta.apps.InstaConfig',
     'common.apps.CommonConfig',
 
