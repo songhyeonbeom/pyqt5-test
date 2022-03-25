@@ -127,6 +127,51 @@ password
 
 
 
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
+
+
+
+pybo-vote_question   
+파이보 urls.py 찾아가서 name = vote_question  을 보아라
+
+    path('vote/question/<int:question_id>/', vote_views.vote_question, name='vote_question'),
+
+주소 생성은 저렇게 되면서
+vote_views.py 안에 vote_question 을 봐라.
+
+
+
+
+
+
+
+
+
+
+
+
+    return redirect('pybo:detail', question_id=question.id)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+pybo views.py 안에 name detail 설정 되어있는것을 찾으라.
+
+    path('<int:question_id>/', base_views.detail, name='detail'),
+
+pybo - base_views 안에 detail이 만들어져 있다.
+
+    return render(request, 'pybo/question_detail.html', context)
 
 
 
