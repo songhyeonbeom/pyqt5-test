@@ -8,6 +8,16 @@
 
 {% block content %}
 
+        <div class="col-1"> <!-- 추천영역 -->
+            <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{photo.voter.count}}</div>
+            <a href="#" data-uri="{% url 'insta:vote_photo' photo.id  %}"
+               class="recommend btn btn-sm btn-secondary btn-block my-1">추천</a>
+        </div>
+
+
+
+
+
 <h2 class="mt-5">{{ object.title }}</h2>
 
 <div class="row">
@@ -30,3 +40,27 @@
 
 {% endblock %}
 
+
+
+{% block script %}
+<script type='text/javascript'>
+    $(document).ready(function () {
+        $(".delete").on('click', function () {
+            if (confirm("정말로 삭제하시겠습니까?")) {
+                location.href = $(this).data('uri');
+            }
+        });
+        $(".recommend").on('click', function () {
+            if (confirm("정말로 추천하시겠습니까?")) {
+                location.href = $(this).data('uri');
+            }
+        });
+
+
+    });
+
+
+
+
+</script>
+{% endblock %}

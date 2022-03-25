@@ -3,6 +3,8 @@ from insta import views, vote_views
 
 
 
+
+
 app_name = 'insta'
 urlpatterns = [
 
@@ -13,6 +15,13 @@ urlpatterns = [
     # path('album/<int:pk>/', views.AlbumDV.as_view(), name='album_detail'),
 
     path('photo/<int:pk>/', views.PhotoDV.as_view(), name='photo_detail'),
+
+    path('photo/<int:photo_id>/', vote_views.vote_photo, name='vote_photo'),
+
+    # path('vote/photo/<int:photo_id>/', vote_views.vote_photo, name='vote_photo'),
+    # path('<int:photo_id>/', views.detail, name='detail'),
+
+
 
 
 

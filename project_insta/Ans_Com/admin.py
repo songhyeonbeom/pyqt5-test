@@ -5,7 +5,8 @@ from .models import Answer
 admin.site.register(Answer)
 
 
-
+class AnswerAdmin(admin.ModelAdmin):
+    list_display = ('content', 'create_date', )
 
 
 
