@@ -141,29 +141,16 @@ pybo-vote_question
 
 주소 생성은 저렇게 되면서
 vote_views.py 안에 vote_question 을 봐라.
+ 		   vote_photo 를 만들어놨음.
 
-
-
-
-
-
-
-
-
-
-
-
+def vote_question(request, question_id):
     return redirect('pybo:detail', question_id=question.id)
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+def vote_photo(request, photo_id):
+    return redirect('insta:photo_detail', photo_id=photo.id)
+
+비슷하게 만들어놨음.
     
 pybo views.py 안에 name detail 설정 되어있는것을 찾으라.
 
