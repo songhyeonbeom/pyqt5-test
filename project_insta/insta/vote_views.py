@@ -15,7 +15,7 @@ def vote_photo(request, photo_id):
         messages.error(request, '본인이 작성한 글은 추천할수 없습니다')
     else:
         photo.voter.add(request.user)
-    return redirect('insta:photo_detail', photo_id=photo.id)
+    return redirect('insta:photo_detail', pk=photo.id)
 
 
 
