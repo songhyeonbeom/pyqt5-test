@@ -18,8 +18,7 @@
 
 
 
-<h2 class="mt-5">{{ object.title }}</h2>
-
+<br>
 <div class="row">
     <div class="col-md-9">
         <a href="{{ object.image.url }}">
@@ -29,10 +28,10 @@
 
 
     <ul class="col-md-3 mt-3">
-        <li class="h5">Photo Description</li>
+        <h2 class="mt-5">{{ object.title }}</h2>
+
         {% if object.description %}<p>{{ object.description|linebreaks }}</p>
         {% else %}<p>(blank)</p>{% endif %}
-        <li class="h5">Date Uploaded</li>
         <p class="font-italic">{{ object.upload_dt }}</p>
     </ul>
 </div>
