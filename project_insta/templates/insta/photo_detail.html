@@ -3,19 +3,13 @@
 {% block title %}photo_detail.html{% endblock %}
 
 
-
-
-
 {% block content %}
 
-        <div class="col-1"> <!-- 추천영역 -->
-            <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{photo.voter.count}}</div>
-            <a href="#" data-uri="{% url 'insta:vote_photo' photo.id  %}"
-               class="recommend btn btn-sm btn-secondary btn-block my-1">추천</a>
-        </div>
-
-
-
+<div class="col-1"> <!-- 추천영역 -->
+    <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{photo.voter.count}}</div>
+    <a href="#" data-uri="{% url 'insta:vote_photo' photo.id  %}"
+       class="recommend btn btn-sm btn-secondary btn-block my-1">추천</a>
+</div>
 
 
 <br>
@@ -28,17 +22,31 @@
 
 
     <ul class="col-md-3 mt-3">
+
+        <td>ID : {{ photo.owner.username }}</td>
+
         <h2 class="mt-5">{{ object.title }}</h2>
 
         {% if object.description %}<p>{{ object.description|linebreaks }}</p>
         {% else %}<p>(blank)</p>{% endif %}
         <p class="font-italic">{{ object.upload_dt }}</p>
+
+
+
+        <form action="{% url 'Ans_Com:answer_create' photo.id %}" method="post">
+            {% csrf_token %}
+            <textarea name="content" id="content" rows="15"></textarea>
+            <input type="submit" value="답변등록">
+        </form>
+
+
     </ul>
+
+
 </div>
 
 
 {% endblock %}
-
 
 
 {% block script %}
@@ -57,6 +65,7 @@
 
 
     });
+
 
 
 
