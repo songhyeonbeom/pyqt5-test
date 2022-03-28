@@ -29,10 +29,14 @@ urlpatterns = [
 
     path('', RedirectView.as_view(url='/insta/', permanent=True)),
     path('insta/', include('insta.urls')),
-
-    # path('', include('insta.urls')),  # '/' 에 해당되는 path
-
     path('common/', include('common.urls')),
+
+
+    path('Ans_Com/', include('Ans_Com.urls')),
+
+
+
+
 
 
     # path('', lambda request: redirect('insta/')),

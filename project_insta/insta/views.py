@@ -24,7 +24,7 @@ def allPhotoAB(request, c_slug=None):
         print(c_slug, "22222222")
         c_page = get_object_or_404(Album, slug = c_slug)
         photos_list = Photo.objects.filter(album = c_page, ).order_by('-upload_dt')
-        # photos_list = Photo.objects.order_by('-upload_dt')
+
 
     else:
         print(c_slug, "11111111111")

@@ -1,15 +1,22 @@
 {% extends "base.html" %}
-
 {% block title %}photo_detail.html{% endblock %}
 
 
 {% block content %}
+<style>
+.textarea2 {
+ width: 300px;
+ height: 100px;
+ background-color: yellow;
+ font-size: 1em;
+ font-weight: bold;
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ border: 1px solid black;
+}
+</style>
 
-<div class="col-1"> <!-- 추천영역 -->
-    <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{photo.voter.count}}</div>
-    <a href="#" data-uri="{% url 'insta:vote_photo' photo.id  %}"
-       class="recommend btn btn-sm btn-secondary btn-block my-1">추천</a>
-</div>
+
+<!--            <textarea name="content" rows="3" class="textarea2"></textarea>-->
 
 
 <br>
@@ -17,7 +24,16 @@
     <div class="col-md-9">
         <a href="{{ object.image.url }}">
             <img src="{{ object.image.url }}" style="width: 90%;">
+
         </a>
+        <br><br>
+        <div class="col-1"> <!-- 추천영역 -->
+            <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{photo.voter.count}}</div>
+            <a href="#" data-uri="{% url 'insta:vote_photo' photo.id  %}"
+               class="recommend btn btn-sm btn-secondary btn-block my-1">좋아요</a>
+        </div>
+
+
     </div>
 
 
@@ -32,12 +48,21 @@
         <p class="font-italic">{{ object.upload_dt }}</p>
 
 
-
         <form action="{% url 'Ans_Com:answer_create' photo.id %}" method="post">
             {% csrf_token %}
-            <textarea name="content" id="content" rows="15"></textarea>
+            <textarea name="content" rows="2"></textarea>
             <input type="submit" value="답변등록">
         </form>
+
+
+        <h5>{{ photo.answer_set.count }}개의 답변이 있습니다.</h5>
+        <div>
+            <ul>
+                {% for answer in photo.answer_set.all %}
+                <li>{{ answer.content }}</li>
+                {% endfor %}
+            </ul>
+        </div>
 
 
     </ul>
@@ -65,6 +90,7 @@
 
 
     });
+
 
 
 
