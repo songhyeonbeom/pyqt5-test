@@ -1,7 +1,4 @@
 {% extends "base.html" %}
-{% block metadescription %}
-Welcome to the PLATE-STUDIO where you can buy awesome items.
-{% endblock %}
 
 {% block title %}
 {% if album %}
@@ -13,18 +10,20 @@ See Our Photos Collection - PLATE-STUDIO
 
 {% block content %}
 
-
+<br>
 <div>
-    <h1 class="text-center my_title">인스타 같이 만들어 보자</h1>
-    <p class="text-justify">밑에 설명 란 길게 쓰는곳</p>
+    <h1 class="text-center my_title">BLACKVERI_0</h1>
+    <br>
+    <p class = "text-center">나만의 일기장 <br>너희들은 댓글만 달수있다.</p>
 </div>
-
+<br><br>
 <div class="container">
     <div class="row mx-auto">
         {% for photo in photos.object_list %}
-        <div class="my_bottom_margin col-9 col-sm-6 col-md-4 col-lg-4">
-            <div class="card text-center" style="width: 18rem;">
-                <a href="{{ photo.get_absolute_url }}"><img class="card-img-top my_image" src="{{photo.image.url}}"
+        <div class="my_bottom_margin col-9 col-sm-6 col-md-4 col-lg-4" style="height: 530px;">
+            <div class="card text-center" style="width: 20.5rem;">
+                <a href="{{ photo.get_absolute_url }}">
+                    <img class="card-img-top my_image" src="{{photo.image.url}}"
                                                             alt="{{photo.upload_dt}}"></a>
                 <div class="card-body">
                     <h4>{{photo.title}}</h4>
@@ -33,6 +32,7 @@ See Our Photos Collection - PLATE-STUDIO
         </div>
         {% endfor %}
     </div>
+    <br><br>
     <div class="mx-auto">
         {% if photos.paginator.num_pages > 1 %}
         <br>
@@ -45,5 +45,4 @@ See Our Photos Collection - PLATE-STUDIO
     </div>
     <br>
 </div>
-            <textarea name="content" rows="3" cols="10"></textarea>
 {% endblock %}

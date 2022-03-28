@@ -6,7 +6,7 @@ admin.site.register(Answer)
 
 
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ('content', 'create_date', )
+    list_display = ('content', 'create_date', 'owner',)
 
 
 

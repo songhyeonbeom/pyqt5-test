@@ -34,7 +34,7 @@ class Photo(models.Model):
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owner_photo')
     voter = models.ManyToManyField(User, related_name='voter_photo')
-
+    modify_date = models.DateTimeField(null=True, blank=True)
 
 
 

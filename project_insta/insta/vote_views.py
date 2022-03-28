@@ -1,7 +1,9 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
 
+from .forms import PhotoForm
 from .models import Photo
 
 
@@ -28,16 +30,24 @@ def detail(request, photo_id):
     return render(request, 'insta/photo_detail.html', context)
 
 
+@login_required(login_url='common:login')
+def photo_modify(request, photo_id):
+    """
+    pybo 질문수정
+    """
+    photo = get_object_or_404(Photo, pk=photo_id)
+    if request.user != photo.owner:
+        messages.error(request, '수정권한이 없습니다')
+        return redirect('insta:photo_detail', pk=photo.id)
 
-
-
-
-
-
-
-
-
-
-
-
-
+    if request.method == "POST":
+        form = PhotoForm(request.POST, instance=photo)
+        if form.is_valid():
+            photo = form.save(commit=False)
+            photo.modify_date = timezone.now()  # 수정일시 저장
+            photo.save()
+            return redirect('insta:photo_detail', pk=photo.id)
+    else:
+        form = PhotoForm(instance=photo)
+    context = {'form': form}
+    return render(request, 'insta/photo_form.html', context)
