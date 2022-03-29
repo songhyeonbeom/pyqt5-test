@@ -15,6 +15,7 @@ class PhotoForm(forms.ModelForm):
             'owner': forms.TextInput(attrs={'class': 'form-control'}),
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 10}),
+
         }
         labels = {
             'owner': '작성자',

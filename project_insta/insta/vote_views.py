@@ -51,3 +51,19 @@ def photo_modify(request, photo_id):
         form = PhotoForm(instance=photo)
     context = {'form': form}
     return render(request, 'insta/photo_form.html', context)
+
+
+
+
+
+@login_required(login_url='common:login')
+def photo_delete(request, photo_id):
+    """
+    insta photo 댓글 삭제
+    """
+    photo = get_object_or_404(Photo, pk=photo_id)
+    if request.user != photo.owner:
+        messages.error(request, '삭제권한이 없습니다.')
+        return redirect('insta:photo_detail', pk=photo.id)
+    photo.delete()
+    return redirect('insta:allPhotoAB')
