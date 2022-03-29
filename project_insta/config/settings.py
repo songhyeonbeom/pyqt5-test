@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 
     'insta.apps.InstaConfig',
     'common.apps.CommonConfig',
+    'widget_tweaks',
 
     'django.contrib.admin',
     'django.contrib.auth',

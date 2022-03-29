@@ -27,10 +27,9 @@ urlpatterns = [
 
     path('answer/delete/<int:answer_id>/', vote_views.answer_delete, name='answer_delete'),
 
-    path('album/add/', views.photo_create.as_view(), name='photo_create'),
+    path('photo/add/', views.PhotoCV.as_view(), name='photo_add'),
 
-
-    # path('album/add/', views.AlbumPhotoCV.as_view(), name='album_add'),
+    path('album/add/', views.AlbumPhotoCV.as_view(), name='album_add'),
 
 
 

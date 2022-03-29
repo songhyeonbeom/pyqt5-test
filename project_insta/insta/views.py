@@ -17,10 +17,20 @@ from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
 
 
-class photo_create(LoginRequiredMixin, CreateView):
+class PhotoCV(LoginRequiredMixin, CreateView):
+    model = Photo
+    fields = ('album', 'title', 'image', 'description',)
+    success_url = reverse_lazy('insta:allPhotoAB')
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
+
+class AlbumPhotoCV(LoginRequiredMixin, CreateView):
     model = Album
     fields = ('name', 'slug')
-    success_url = reverse_lazy('photo:allPhotoAB')
+    success_url = reverse_lazy('insta:allPhotoAB')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -43,8 +53,6 @@ class photo_create(LoginRequiredMixin, CreateView):
             return redirect(self.get_success_url())
         else:
             return self.render_to_response(self.get_context_data(form=form))
-
-
 
 
 
@@ -104,15 +112,6 @@ class PhotoDV(DetailView):
     model = Photo
 
 
-class PhotoCV(LoginRequiredMixin, CreateView):
-    model = Photo
-    fields = ('album', 'title', 'image', 'description')
-    success_url = reverse_lazy('insta:index')
-
-    def form_valid(self, form):
-        form.instance.owner = self.request.user
-        return super().form_valid(form)
-
 
 class PhotoChangeLV(LoginRequiredMixin, ListView):
     model = Photo
@@ -134,32 +133,6 @@ class PhotoDelV(OwnerOnlyMixin, DeleteView):
     success_url = reverse_lazy('insta:index')
 
 
-class AlbumPhotoCV(LoginRequiredMixin, CreateView):
-    model = Album
-    fields = ('name', 'description')
-    success_url = reverse_lazy('insta:index')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if self.request.POST:
-            context['formset'] = PhotoInlineFormSet(self.request.POST, self.request.FILES)
-        else:
-            context['formset'] = PhotoInlineFormSet()
-        return context
-
-    def form_valid(self, form):
-        form.instance.owner = self.request.user
-        context = self.get_context_data()
-        formset = context['formset']
-        for photoform in formset:
-            photoform.instance.owner = self.request.user
-        if formset.is_valid():
-            self.object = form.save()
-            formset.instance = self.object
-            formset.save()
-            return redirect(self.get_success_url())
-        else:
-            return self.render_to_response(self.get_context_data(form=form))
 
 
 #--- Change-list/Delete for Album
