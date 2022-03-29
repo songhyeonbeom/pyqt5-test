@@ -6,6 +6,7 @@ PhotoInlineFormSet = inlineformset_factory(Album, Photo,
                                            fields=['image', 'title', 'slug'],
                                            extra=2)
 
+
 class PhotoForm(forms.ModelForm):
     class Meta:
         model = Photo  # 사용할 모델

@@ -18,14 +18,19 @@ urlpatterns = [
 
     path('vote/photo/<int:photo_id>/', vote_views.vote_photo, name='vote_photo'),
 
-    path('photo/modify/<int:photo_id>/', vote_views.photo_modify, name='photo_modify'),
-
-    path('photo/delete/<int:photo_id>/', vote_views.photo_delete, name='photo_delete'),
-
     path('answer/create/<int:photo_id>/', vote_views.answer_create, name='answer_create'),
 
+    path('photo/modify/<int:photo_id>/', vote_views.photo_modify, name='photo_modify'),
+    path('photo/delete/<int:photo_id>/', vote_views.photo_delete, name='photo_delete'),
+
+    path('answer/modify/<int:answer_id>/', vote_views.answer_modify, name='answer_modify'),
+
+    path('answer/delete/<int:answer_id>/', vote_views.answer_delete, name='answer_delete'),
+
+    path('album/add/', views.photo_create.as_view(), name='photo_create'),
 
 
+    # path('album/add/', views.AlbumPhotoCV.as_view(), name='album_add'),
 
 
 

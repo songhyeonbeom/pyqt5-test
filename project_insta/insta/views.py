@@ -4,19 +4,51 @@ from django.views.generic import CreateView, UpdateView, DeleteView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from insta.forms import PhotoInlineFormSet
+from insta.forms import PhotoInlineFormSet, PhotoForm
 from config.views import OwnerOnlyMixin
+from django.utils import timezone
 
 
 from django.shortcuts import render, get_object_or_404
 from insta.models import Album, Photo
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
-from django.contrib.auth.decorators import login_required
 
 
 
 
-# Create your views here.
+
+class photo_create(LoginRequiredMixin, CreateView):
+    model = Album
+    fields = ('name', 'slug')
+    success_url = reverse_lazy('photo:allPhotoAB')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.POST:
+            context['formset'] = PhotoInlineFormSet(self.request.POST, self.request.FILES)
+        else:
+            context['formset'] = PhotoInlineFormSet()
+        return context
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        context = self.get_context_data()
+        formset = context['formset']
+        for photoform in formset:
+            photoform.instance.owner = self.request.user
+        if formset.is_valid():
+            self.object = form.save()
+            formset.instance = self.object
+            formset.save()
+            return redirect(self.get_success_url())
+        else:
+            return self.render_to_response(self.get_context_data(form=form))
+
+
+
+
+
+
 def allPhotoAB(request, c_slug=None):
     c_page = None
     photos_list = None
@@ -30,7 +62,6 @@ def allPhotoAB(request, c_slug=None):
         print(c_slug, "11111111111")
         # photos_list = Photo.objects.all()  #원래있던 가나다 순 올포토 보이기
         photos_list = Photo.objects.order_by('-upload_dt')
-        #order_by / 정렬을 하겠다 (괄호안의 데이터 값으로 마이너스 기호 있고없고 정렬하겠다.)
     paginator = Paginator(photos_list, 9)
     try:
         page = int(request.GET.get('page', 1))

@@ -1,41 +1,72 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}photo_form.html{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h5 class="my-3 border-bottom pb-2">Photo 수정페이</h5>
-    <form method="post" class="post-form my-3">
+<h1>Photo Create/Update - {{user}}</h1>
+<p class="font-italic">This is a creation or update form for your photo.</p>
+
+{% if form.errors %}
+<div class="alert alert-danger">
+    <div class="font-weight-bold">Wrong! Please correct the error(s) below.</div>
+    {{ form.errors }}
+</div>
+{% endif %}
+
+{% if form.is_multipart %}
+<form enctype="multipart/form-data" action="" method="post" class="card pt-3">
+    {% else %}
+    <form action="." method="post" class="card pt-3">
+        {% endif %}
         {% csrf_token %}
 
-        <!-- 오류표시 Start -->
-        {% if form.errors %}
-        <div class="alert alert-danger" role="alert">
-            {% for field in form %}
-            {% if field.errors %}
-            <strong>{{ field.label }}</strong>
-            {{ field.errors }}
-            {% endif %}
-            {% endfor %}
-        </div>
-        {% endif %}
-        <!-- 오류표시 End -->
-        <div class="form-group">
-            <label for="owner">작성자</label>
-            <input type="text" class="form-control" name="owner" id="owner"
-                value="{{ form.owner.value|default_if_none:'' }}">
-        </div>
-        <div class="form-group">
-            <label for="title">제목</label>
-            <input type="text" class="form-control" name="title" id="title"
-                value="{{ form.title.value|default_if_none:'' }}">
-        </div>
-        <div class="form-group">
-            <label for="description">내용</label>
-            <textarea class="form-control" name="description" id="description"
-                rows="10">{{ form.description.value|default_if_none:'' }}</textarea>
+        <div class="form-group row">
+            {{ form.album|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
+            <div class="col-sm-2">
+                {{ form.album|add_class:"form-control" }}
+            </div>
+            <div class="col-sm-2 my-auto">
+                <a href="{% url 'insta:album_add' %}" class="btn btn-outline-primary btn-sm">
+                    Add Album</a>
+            </div>
         </div>
 
-        <!--        {{ form.as_p }}-->
-        <button type="submit" class="btn btn-primary">저장하기</button>
+        <div class="form-group row">
+            {{ form.title|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
+            <div class="col-sm-5">
+                {{ form.title|add_class:"form-control"|attr:"autofocus" }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            {{ form.image|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
+            <div class="col-sm-5">
+                {{ form.image|add_class:"form-control-file" }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            {{ form.description|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
+            <div class="col-sm-8">
+                {{ form.description|add_class:"form-control"|attr:"rows:3" }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            {{ form.voter|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
+            <div class="col-sm-8">
+                {{ form.voter|add_class:"form-control"|attr:"rows:3" }}
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="offset-sm-2 col-sm-5">
+                <input type="submit" value="Submit" class="btn btn-info"/>
+            </div>
+        </div>
+
     </form>
-</div>
-{% endblock %}
+
+    {% endblock %}

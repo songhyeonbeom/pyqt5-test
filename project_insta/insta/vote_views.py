@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect, resolve_url
 from django.utils import timezone
 
 from .forms import PhotoForm, AnswerForm
-from .models import Photo
+from .models import Photo, Answer
 
 
 
@@ -63,7 +63,7 @@ def detail(request, photo_id):
 @login_required(login_url='common:login')
 def photo_modify(request, photo_id):
     """
-    insta photo 수정
+    photo 게시물 수정
     """
     photo = get_object_or_404(Photo, pk=photo_id)
     if request.user != photo.owner:
@@ -85,11 +85,56 @@ def photo_modify(request, photo_id):
 
 
 
+@login_required(login_url='common:login')
+def answer_modify(request, answer_id):
+    """
+    photo 댓글수정
+    """
+    answer = get_object_or_404(Answer, pk=answer_id)
+    if request.user != answer.owner:
+        messages.error(request, '수정권한이 없습니다')
+        return redirect('insta:photo_detail', photo_id=answer.photo.id)
+
+    if request.method == "POST":
+        form = AnswerForm(request.POST, instance=answer)
+        if form.is_valid():
+            answer = form.save(commit=False)
+            answer.modify_date = timezone.now()
+            answer.save()
+            return redirect('insta:photo_detail', photo_id=answer.photo.id)
+    else:
+        form = AnswerForm(instance=answer)
+    context = {'answer': answer, 'form': form}
+    return render(request, 'insta/answer_form.html', context)
+
+
+def answer_delete(request, answer_id):
+    """
+    photo 댓글 삭제
+    """
+    answer = get_object_or_404(Answer, pk=answer_id)
+    if request.user != answer.owner:
+        messages.error(request, '삭제권한이 없습니다.')
+    else:
+        answer.delete()
+    return redirect('insta:photo_detail', photo_id=answer.photo.id)
+
+
+
+
+
+
+
+
+
+
+
+
 
 @login_required(login_url='common:login')
 def photo_delete(request, photo_id):
     """
-    insta photo 댓글 삭제
+    photo 게시물 삭제
     """
     photo = get_object_or_404(Photo, pk=photo_id)
     if request.user != photo.owner:
