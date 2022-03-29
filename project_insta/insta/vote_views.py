@@ -33,7 +33,7 @@ def detail(request, photo_id):
 @login_required(login_url='common:login')
 def photo_modify(request, photo_id):
     """
-    pybo 질문수정
+    insta photo 수정
     """
     photo = get_object_or_404(Photo, pk=photo_id)
     if request.user != photo.owner:
