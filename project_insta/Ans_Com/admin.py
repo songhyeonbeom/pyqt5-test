@@ -3,15 +3,12 @@ from django.contrib import admin
 from .models import Answer
 
 # Register your models here.
-admin.site.register(Answer,)
 
 
+@admin.register(Answer)
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ('content', 'create_date', 'owner',)
-    search_fields = ['content']
-
-
-
+    list_display = ['content', 'create_date', 'owner']
+    list_display_links = ['content', 'create_date']
 
 
 
