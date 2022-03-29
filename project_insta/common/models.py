@@ -58,7 +58,7 @@ class User(AbstractBaseUser):
     email = models.EmailField(verbose_name='email', max_length=255, )
     realname = models.CharField(verbose_name='realname', max_length=20, null=True,)
     birth_date = models.DateField(verbose_name='birth_date', blank=True, null=True, )
-    phone = models.TextField(verbose_name='phone', max_length=11, null=True,)
+    phone = models.CharField(verbose_name='phone', max_length=11, null=True,)
     gender = models.IntegerField(verbose_name='gender', null=True,)
     gender2 = models.CharField(verbose_name="gender2", max_length=5, null=True,)
 
