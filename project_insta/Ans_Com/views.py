@@ -13,7 +13,6 @@ from django.contrib.auth.decorators import login_required, resolve_url
 
 
 
-
 @login_required(login_url='common:login')
 def answer_create(request, photo_id):
     """

@@ -7,7 +7,7 @@ from .models import Answer
 
 @admin.register(Answer)
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ['content', 'create_date', 'owner']
+    list_display = ['id', 'photo', 'content', 'create_date', 'owner']
     list_display_links = ['content', 'create_date']
 
 

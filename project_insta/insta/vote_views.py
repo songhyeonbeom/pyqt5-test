@@ -27,7 +27,7 @@ def detail(request, photo_id):
     """
     photo = get_object_or_404(Photo, pk=photo_id)
     context = {'photo': photo}
-    return render(request, 'insta/photo_detail.html', context)
+    return render(request, 'insta/answer_detail.html', context)
 
 
 @login_required(login_url='common:login')
