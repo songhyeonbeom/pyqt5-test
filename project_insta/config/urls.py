@@ -32,7 +32,6 @@ urlpatterns = [
     path('common/', include('common.urls')),
 
 
-    path('Ans_Com/', include('Ans_Com.urls')),
 
 
 

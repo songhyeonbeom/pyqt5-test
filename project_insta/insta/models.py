@@ -11,7 +11,6 @@ class Album(models.Model):
     slug = models.SlugField(max_length=250, unique=True)
     owner = models.ForeignKey('common.User', on_delete=models.CASCADE, verbose_name='OWNER', blank=True, null=True)
 
-
     class Meta:
         ordering = ('name',)
 
@@ -20,7 +19,6 @@ class Album(models.Model):
 
     def __str__(self) :
         return '{}'.format(self.name)
-
 
 
 class Photo(models.Model):
@@ -36,13 +34,10 @@ class Photo(models.Model):
     voter = models.ManyToManyField(User, related_name='voter_photo')
     modify_date = models.DateTimeField(null=True, blank=True)
 
-
-
     class Meta:
         ordering = ('title',)
         # db_table- "Photo_table"
         # verbose_name = "my favorite post"
-
     def __str__(self):
         return self.title
 
@@ -50,6 +45,15 @@ class Photo(models.Model):
         return reverse('insta:photo_detail', args = [self.id])
 
 
+
+class Answer(models.Model):
+    photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
+    content = models.TextField()
+    create_date = models.DateTimeField()
+    modify_date = models.DateTimeField(null=True, blank=True)
+
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='owner_answer')
+    voter = models.ManyToManyField(User, related_name='voter_answer')
 
 
 

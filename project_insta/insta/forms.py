@@ -1,5 +1,5 @@
 from django.forms import inlineformset_factory
-from insta.models import Album, Photo
+from insta.models import Album, Photo, Answer
 from django import forms
 
 PhotoInlineFormSet = inlineformset_factory(Album, Photo,
@@ -21,4 +21,14 @@ class PhotoForm(forms.ModelForm):
             'owner': '작성자',
             'title': '제목',
             'description': '내용',
+        }
+
+
+
+class AnswerForm(forms.ModelForm):
+    class Meta:
+        model = Answer
+        fields = ['content']
+        labels = {
+            'content': '답변내용',
         }

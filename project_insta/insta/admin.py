@@ -1,6 +1,6 @@
 # Register your models here.
 from django.contrib import admin
-from insta.models import Album, Photo
+from insta.models import Album, Photo, Answer
 
 
 class PhotoInline(admin.StackedInline):
@@ -20,5 +20,11 @@ class AlbumAdmin(admin.ModelAdmin):
 class PhotoAdmin(admin.ModelAdmin):
     list_display = ('id', 'slug', 'title', 'upload_dt',)
     search_fields = ['title', 'slug', ]
+
+
+@admin.register(Answer)
+class AnswerAdmin(admin.ModelAdmin):
+    list_display = ['id', 'photo', 'content', 'create_date', 'owner']
+    list_display_links = ['content', 'create_date']
 
 

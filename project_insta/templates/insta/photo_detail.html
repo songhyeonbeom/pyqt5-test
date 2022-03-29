@@ -63,7 +63,7 @@
         {% endif %}
 
 
-        <form action="{% url 'Ans_Com:answer_create' photo.id %}" method="post">
+        <form action="{% url 'insta:answer_create' photo.id %}" method="post">
             {% csrf_token %}
 
             {% if form.errors %}

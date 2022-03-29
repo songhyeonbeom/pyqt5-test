@@ -20,7 +20,13 @@ urlpatterns = [
 
     path('photo/modify/<int:photo_id>/', vote_views.photo_modify, name='photo_modify'),
 
-    path('photo/delete/<int:photo_id>/', vote_views.photo_delete, name='photo_delete')
+    path('photo/delete/<int:photo_id>/', vote_views.photo_delete, name='photo_delete'),
+
+    path('answer/create/<int:photo_id>/', vote_views.answer_create, name='answer_create'),
+
+
+
+
 
 
 
