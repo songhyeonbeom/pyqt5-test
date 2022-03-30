@@ -1,5 +1,6 @@
 from .models import Photo, Album
 
+
 def menu_links(request) :
     links = Album.objects.all()
     return dict(links = links)

@@ -10,9 +10,9 @@ See Our Photos Collection - PLATE-STUDIO
 
 {% block content %}
 
-
+{% if request.username == user.username %}
 <a href="{% url 'insta:photo_add' %}" class="btn btn-primary">사진 등록하기</a>
-
+{% endif %}
 
 <br>
 <div>
@@ -23,14 +23,15 @@ See Our Photos Collection - PLATE-STUDIO
 <br><br>
 <div class="container">
     <div class="row mx-auto">
+<!--    <div class=style="flex-direction: column; padding-bottom: 3562.33px; padding-top: 0px;"></div>-->
         {% for photo in photos.object_list %}
         <div class="my_bottom_margin col-9 col-sm-6 col-md-4 col-lg-4">
 
-<!--            <div class="card text-center" style="width: 100%;">-->
-            <div class="thumbnail" style="width: 100%;">
+<!--            <div class="card text-center" style="width: 100%; margin-bottom: 8%;">-->
+            <div class="thumbnail" style="width: 100%; margin-bottom: 9%;">
 
                 <a href="{{ photo.get_absolute_url }}">
-                    <img src="{{ photo.image.thumb_url }}" style="width: 100%;"><br><br>
+                    <img src="{{ photo.image.thumb_url }}" style="width: 100%;">
 <!--                    <img class="card-img-top my_image" src="{{photo.image.url}}"-->
 <!--                                                            alt="{{photo.upload_dt}}"></a>-->
 <!--                <div class="card-body">-->
