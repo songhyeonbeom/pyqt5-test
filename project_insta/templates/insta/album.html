@@ -18,23 +18,28 @@ See Our Photos Collection - PLATE-STUDIO
 <div>
     <h1 class="text-center my_title">BLACKVERI_0</h1>
     <br>
-    <p class = "text-center">나만의 일기장 <br>너희들은 댓글만 달수있다.</p>
+    <p class = "text-center">무한의 포토앨범 <br>사진을 등록해보세요</p>
 </div>
 <br><br>
 <div class="container">
     <div class="row mx-auto">
         {% for photo in photos.object_list %}
         <div class="my_bottom_margin col-9 col-sm-6 col-md-4 col-lg-4">
-            <div class="card text-center" style="width: 20.5rem;">
+
+<!--            <div class="card text-center" style="width: 100%;">-->
+            <div class="thumbnail" style="width: 100%;">
+
                 <a href="{{ photo.get_absolute_url }}">
-                    <img class="card-img-top my_image" src="{{photo.image.url}}"
-                                                            alt="{{photo.upload_dt}}"></a>
-                <div class="card-body">
-                    <h4>{{photo.title}}</h4>
-                </div>
+                    <img src="{{ photo.image.thumb_url }}" style="width: 100%;"><br><br>
+<!--                    <img class="card-img-top my_image" src="{{photo.image.url}}"-->
+<!--                                                            alt="{{photo.upload_dt}}"></a>-->
+<!--                <div class="card-body">-->
+<!--                    <h4>{{photo.title}}</h4>-->
+<!--                </div>-->
             </div>
         </div>
         {% endfor %}
+
     </div>
     <br><br>
     <div class="mx-auto">
