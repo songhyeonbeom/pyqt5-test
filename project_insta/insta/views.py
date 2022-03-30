@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView
 from django.views.generic import CreateView, UpdateView, DeleteView
 
@@ -22,6 +23,7 @@ class PhotoCV(LoginRequiredMixin, CreateView):
     fields = ('album', 'title', 'image', 'description',)
     success_url = reverse_lazy('insta:allPhotoAB')
 
+    @login_required(login_url='common:login')
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super().form_valid(form)
@@ -29,9 +31,10 @@ class PhotoCV(LoginRequiredMixin, CreateView):
 
 class AlbumPhotoCV(LoginRequiredMixin, CreateView):
     model = Album
-    fields = ('name', 'slug', )
+    fields = ('name', 'slug',)
     success_url = reverse_lazy('insta:allPhotoAB')
 
+    @login_required(login_url='common:login')
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if self.request.POST:
@@ -40,6 +43,7 @@ class AlbumPhotoCV(LoginRequiredMixin, CreateView):
             context['formset'] = PhotoInlineFormSet()
         return context
 
+    @login_required(login_url='common:login')
     def form_valid(self, form):
         form.instance.owner = self.request.user
         context = self.get_context_data()

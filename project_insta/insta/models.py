@@ -7,6 +7,7 @@ from common.models import User
 
 class Album(models.Model):
     #id 프라이머리키
+    objects = None
     name = models.CharField('NAME', max_length=30)
     slug = models.SlugField(max_length=250, unique=True)
     owner = models.ForeignKey('common.User', on_delete=models.CASCADE, verbose_name='OWNER', blank=True, null=True)

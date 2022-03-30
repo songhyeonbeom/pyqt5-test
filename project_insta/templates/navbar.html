@@ -8,19 +8,21 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'insta:allPhotoAB' %}">전체보기</a>
-
-
-                <!--                {% for name in links3 %}-->
-                <!--                <a class="nav-link" href="{{ name.get_absolute_url }}">{{name.username}}</a>-->
-                <!--                {% endfor %}-->
-
-
             </li>
+        </ul>
+
+        <a href="{% url 'insta:photo_add' %}" class="btn btn-primary">사진 등록하기</a>
+
+
+
+
             {% for cat in links %}
             <a class="nav-link" href="{{ cat.get_absolute_url }}">{{cat.name}}</a>
             {% endfor %}
 
-        </ul>
+
+
+
 
         {% if user.is_authenticated %}
         <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
