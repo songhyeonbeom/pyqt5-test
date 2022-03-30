@@ -1,7 +1,0 @@
-"id","password","last_login","username","email","realname","birth_date","gender","gender2","is_active","is_admin","phone"
-1,pbkdf2_sha256$216000$CDQ6fAc8eJEZ$Lgsk/E3QyW5FDKad4aVFVI/iu8m9run1pj7JlORpj54=,"2022-03-29 02:16:51.217765",song,erekude@naver.com,,,,,1,1,
-2,pbkdf2_sha256$216000$n9WqwmBQIIkv$JSS+AWLli4xfaLPCqpwaWtu4fck5OKoKg1JGPPKpYek=,"2022-03-29 02:15:18.920404",test01,test01@tt.com,te01,"2022-12-31",1,여자,1,0,"01011110000"
-3,pbkdf2_sha256$216000$rLp8Vm4dZQNT$xlCs307sZ2qd6B3gGKicRpuYVGVLYOBUEK4GspmdNYo=,"2022-03-28 06:48:15.220158",test02,test02@tt.com,te02,"2022-06-03",0,남자,1,0,"01022220000"
-4,pbkdf2_sha256$216000$OhwQinyNWmpQ$bQF0jrbevszMazMedJUceTrAWc1LVVVeHWbdQeGJkbs=,"2022-03-28 13:48:47.143248",test03,test03@tt.com,te03,"2011-12-31",0,남자,1,0,"01033330000"
-5,pbkdf2_sha256$216000$wPeoKZVnR789$0/D4BKoQtYeBiyaS2pc0jwMWSVeVAVmKRjedUOIl28M=,"2022-03-25 06:23:05.948291",test05,test05@tt.com,te05,"2017-12-31",1,고자,1,0,"01055550000"
-6,pbkdf2_sha256$216000$xo3dfuGdeOLk$YOFBC75Io08YctVT+zt4xejTuofcB+BRF4TxJdToLD4=,"2022-03-28 00:34:55.351135",test06,test06@tt.com,te06,"2020-11-28",0,여자,1,0,"01066660000"

@@ -8,7 +8,6 @@ from .models import Photo, Answer
 
 
 
-@login_required(login_url='common:login')
 def answer_create(request, photo_id):
     """
     insta photo 답변등록
@@ -37,7 +36,6 @@ def answer_create(request, photo_id):
     return render(request, 'insta/photo_detail.html', context)
 
 
-@login_required(login_url='common:login')
 def vote_photo(request, photo_id):
     """
     insta 사진추천등록

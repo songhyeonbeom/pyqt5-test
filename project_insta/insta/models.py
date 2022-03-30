@@ -32,7 +32,7 @@ class Photo(models.Model):
     upload_dt = models.DateTimeField('UPLOAD DATE', auto_now_add=True)
 
     owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name='owner_photo')
-    voter = models.ManyToManyField(User, related_name='voter_photo')
+    voter = models.ManyToManyField(User, null=True, related_name='voter_photo')
     modify_date = models.DateTimeField(null=True, blank=True)
 
     class Meta:
