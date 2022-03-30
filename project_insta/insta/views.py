@@ -29,7 +29,7 @@ class PhotoCV(LoginRequiredMixin, CreateView):
 
 class AlbumPhotoCV(LoginRequiredMixin, CreateView):
     model = Album
-    fields = ('name', 'slug')
+    fields = ('name', 'slug', )
     success_url = reverse_lazy('insta:allPhotoAB')
 
     def get_context_data(self, **kwargs):
@@ -53,7 +53,6 @@ class AlbumPhotoCV(LoginRequiredMixin, CreateView):
             return redirect(self.get_success_url())
         else:
             return self.render_to_response(self.get_context_data(form=form))
-
 
 
 
@@ -122,56 +121,60 @@ class PhotoChangeLV(LoginRequiredMixin, ListView):
         return Photo.objects.filter(owner=self.request.user)
 
 
-class PhotoUV(OwnerOnlyMixin, UpdateView):
-    model = Photo
-    fields = ('album', 'title', 'image', 'description')
-    success_url = reverse_lazy('insta:index')
-
-
-class PhotoDelV(OwnerOnlyMixin, DeleteView):
-    model = Photo
-    success_url = reverse_lazy('insta:index')
 
 
 
 
-#--- Change-list/Delete for Album
-class AlbumChangeLV(LoginRequiredMixin, ListView):
-    model = Album
-    template_name = 'insta/album_change_list.html'
-
-    def get_queryset(self):
-        return Album.objects.filter(owner=self.request.user)
-
-
-class AlbumPhotoUV(OwnerOnlyMixin, UpdateView):
-    model = Album
-    fields = ('name', 'description')
-    success_url = reverse_lazy('insta:index')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if self.request.POST:
-            context['formset'] = PhotoInlineFormSet(self.request.POST, self.request.FILES, instance=self.object)
-        else:
-            context['formset'] = PhotoInlineFormSet(instance=self.object)
-        return context
-
-    def form_valid(self, form):
-        context = self.get_context_data()
-        formset = context['formset']
-        if formset.is_valid():
-            self.object = form.save()
-            formset.instance = self.object
-            formset.save()
-            return redirect(self.get_success_url())
-        else:
-            return self.render_to_response(self.get_context_data(form=form))
+# class PhotoUV(OwnerOnlyMixin, UpdateView):
+#     model = Photo
+#     fields = ('album', 'title', 'image', 'description')
+#     success_url = reverse_lazy('insta:index')
+#
+#
+# class PhotoDelV(OwnerOnlyMixin, DeleteView):
+#     model = Photo
+#     success_url = reverse_lazy('insta:index')
 
 
-class AlbumDelV(OwnerOnlyMixin, DeleteView):
-    model = Album
-    success_url = reverse_lazy('insta:index')
+
+
+# #--- Change-list/Delete for Album
+# class AlbumChangeLV(LoginRequiredMixin, ListView):
+#     model = Album
+#     template_name = 'insta/album_change_list.html'
+#
+#     def get_queryset(self):
+#         return Album.objects.filter(owner=self.request.user)
+
+
+# class AlbumPhotoUV(OwnerOnlyMixin, UpdateView):
+#     model = Album
+#     fields = ('name', 'description')
+#     success_url = reverse_lazy('insta:index')
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         if self.request.POST:
+#             context['formset'] = PhotoInlineFormSet(self.request.POST, self.request.FILES, instance=self.object)
+#         else:
+#             context['formset'] = PhotoInlineFormSet(instance=self.object)
+#         return context
+#
+#     def form_valid(self, form):
+#         context = self.get_context_data()
+#         formset = context['formset']
+#         if formset.is_valid():
+#             self.object = form.save()
+#             formset.instance = self.object
+#             formset.save()
+#             return redirect(self.get_success_url())
+#         else:
+#             return self.render_to_response(self.get_context_data(form=form))
+
+
+# class AlbumDelV(OwnerOnlyMixin, DeleteView):
+#     model = Album
+#     success_url = reverse_lazy('insta:index')
 
 
 

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 from django.views.generic import ListView, DetailView
@@ -20,7 +21,6 @@ class AlbumDV(DetailView):
 
 class PhotoDV(DetailView):
     model = Photo
-
 
 class PhotoCV(LoginRequiredMixin, CreateView):
     model = Photo
@@ -50,6 +50,7 @@ class PhotoUV(OwnerOnlyMixin, UpdateView):
 class PhotoDelV(OwnerOnlyMixin, DeleteView):
     model = Photo
     success_url = reverse_lazy('photo:index')
+
 
 
 class AlbumPhotoCV(LoginRequiredMixin, CreateView):

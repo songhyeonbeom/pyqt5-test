@@ -51,13 +51,7 @@ def vote_photo(request, photo_id):
 
 
 
-def detail(request, photo_id):
-    """
-    insta 내용 출력
-    """
-    photo = get_object_or_404(Photo, pk=photo_id)
-    context = {'photo': photo}
-    return render(request, 'insta/answer_detail.html', context)
+
 
 
 @login_required(login_url='common:login')
@@ -82,6 +76,18 @@ def photo_modify(request, photo_id):
     context = {'form': form}
     return render(request, 'insta/photo_form.html', context)
 
+
+@login_required(login_url='common:login')
+def photo_delete(request, photo_id):
+    """
+    photo 게시물 삭제
+    """
+    photo = get_object_or_404(Photo, pk=photo_id)
+    if request.user != photo.owner:
+        messages.error(request, '삭제권한이 없습니다.')
+        return redirect('insta:photo_detail', pk=photo.id)
+    photo.delete()
+    return redirect('insta:allPhotoAB')
 
 
 
@@ -126,19 +132,10 @@ def answer_delete(request, answer_id):
 
 
 
-
-
-
-
-
-@login_required(login_url='common:login')
-def photo_delete(request, photo_id):
-    """
-    photo 게시물 삭제
-    """
-    photo = get_object_or_404(Photo, pk=photo_id)
-    if request.user != photo.owner:
-        messages.error(request, '삭제권한이 없습니다.')
-        return redirect('insta:photo_detail', pk=photo.id)
-    photo.delete()
-    return redirect('insta:allPhotoAB')
+# def detail(request, photo_id):
+#     """
+#     insta 내용 출력
+#     """
+#     photo = get_object_or_404(Photo, pk=photo_id)
+#     context = {'photo': photo}
+#     return render(request, 'insta/answer_detail.html', context)

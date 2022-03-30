@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load widget_tweaks %}
-
 {% block title %}photo_form.html{% endblock %}
 
 {% block content %}
@@ -19,8 +18,8 @@
     {% else %}
     <form action="." method="post" class="card pt-3">
         {% endif %}
-        {% csrf_token %}
 
+        {% csrf_token %}
         <div class="form-group row">
             {{ form.album|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
             <div class="col-sm-2">
@@ -52,14 +51,6 @@
                 {{ form.description|add_class:"form-control"|attr:"rows:3" }}
             </div>
         </div>
-
-        <div class="form-group row">
-            {{ form.voter|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-            <div class="col-sm-8">
-                {{ form.voter|add_class:"form-control"|attr:"rows:3" }}
-            </div>
-        </div>
-
 
         <div class="form-group">
             <div class="offset-sm-2 col-sm-5">

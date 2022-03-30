@@ -10,16 +10,16 @@ PhotoInlineFormSet = inlineformset_factory(Album, Photo,
 class PhotoForm(forms.ModelForm):
     class Meta:
         model = Photo  # 사용할 모델
-        fields = ['owner', 'title', 'description']  # QuestionForm에서 사용할 Question 모델의 속성
+        fields = ['title', 'description']  # QuestionForm에서 사용할 Question 모델의 속성
         # 'name',
         widgets = {
-            'owner': forms.TextInput(attrs={'class': 'form-control'}),
+
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 10}),
 
         }
         labels = {
-            'owner': '작성자',
+
             'title': '제목',
             'description': '내용',
         }
