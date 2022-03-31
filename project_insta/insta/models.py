@@ -24,10 +24,10 @@ class Album(models.Model):
 
 class Photo(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
-
-    title = models.CharField('TITLE', null=True, max_length=30)
     image = ThumbnailImageField('IMAGE', upload_to='insta/%Y/%m')
     description = models.TextField('Photo Description', blank=True)
+
+    title = models.CharField('TITLE', null=True, max_length=30)
     upload_dt = models.DateTimeField('UPLOAD DATE', auto_now_add=True)
 
     owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name='owner_photo')

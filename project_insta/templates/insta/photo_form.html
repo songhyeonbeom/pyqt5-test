@@ -18,8 +18,8 @@
     {% else %}
     <form action="." method="post" class="card pt-3">
         {% endif %}
-        {% csrf_token %}
 
+        {% csrf_token %}
         <div class="form-group row">
             {{ form.album|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
             <div class="col-sm-2">
