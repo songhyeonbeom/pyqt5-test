@@ -23,7 +23,7 @@
         <div class="form-group row">
             {{ form.album|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
             <div class="col-sm-2">
-                {{ form.album|add_class:"form-control" }}
+                {{ form.album|add_class:"form-control"|attr:"autofocus" }}
             </div>
             <div class="col-sm-2 my-auto">
                 <a href="{% url 'insta:album_add' %}" class="btn btn-outline-primary btn-sm">
@@ -41,7 +41,7 @@
         <div class="form-group row">
             {{ form.description|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
             <div class="col-sm-8">
-                {{ form.description|add_class:"form-control"|attr:"autofocus" }}
+                {{ form.description|add_class:"form-control"}}
             </div>
         </div>
 

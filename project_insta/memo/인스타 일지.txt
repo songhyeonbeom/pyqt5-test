@@ -161,6 +161,53 @@ pybo - base_views 안에 detail이 만들어져 있다.
     return render(request, 'pybo/question_detail.html', context)
 
 
+================================================================================================
+================================================================================================
+================================================================================================
+
+
+        <div class="form-group row">
+            {{ form.album|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
+            <div class="col-sm-2">
+                {{ form.album|add_class:"form-control"|attr:"autofocus"  }}
+            </div>
+            
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+insta context_processors.py
+def menu_links(request):
+    # select * from Ablum
+    customer = request.user.id
+    print(request)
+    # select username, id from Album where owner_id='1' or
+    links = Album.objects.filter(owner_id=customer)
+    return dict(links = links)
+
+templates navbar.html
+        {% for cat in links %}
+        <a class="nav-link" href="{{ cat.get_absolute_url }}">★{{cat.name}}</a>
+        {% endfor %}
 
 
 
