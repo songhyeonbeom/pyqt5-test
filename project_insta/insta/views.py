@@ -18,20 +18,28 @@ from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
 
 
-class PhotoCV(LoginRequiredMixin, CreateView):
+class PhotoCV(LoginRequiredMixin, CreateView, ):
     model = Photo
+
+    login_url = '/common/login/'
+    redirect_field_name = 'login'
+
     fields = ('album', 'title', 'image', 'description',)
-    success_url = reverse_lazy('insta:allPhotoAB')
+    success_url = reverse_lazy('insta:photo_add')
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
 
-class AlbumPhotoCV(LoginRequiredMixin, CreateView):
+class AlbumPhotoCV(LoginRequiredMixin, CreateView, ):
     model = Album
+
+    login_url = '/common/login/'
+    redirect_field_name = 'login'
+
     fields = ('name', 'slug',)
-    success_url = reverse_lazy('insta:allPhotoAB')
+    success_url = reverse_lazy('insta:photo_add')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

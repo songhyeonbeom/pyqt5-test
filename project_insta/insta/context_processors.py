@@ -2,7 +2,11 @@ from .models import Photo, Album
 
 
 def menu_links(request):
-    links = Album.objects.all()
+    # select * from Ablum
+    customer = request.user.id
+    print(request)
+    # select username, id from Album where owner_id='1' or
+    links = Album.objects.filter(owner_id=customer)
     return dict(links = links)
 
 
