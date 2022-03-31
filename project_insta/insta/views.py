@@ -24,8 +24,8 @@ class PhotoCV(LoginRequiredMixin, CreateView, ):
     login_url = '/common/login/'
     redirect_field_name = 'login'
 
-    fields = ('album', 'title', 'image', 'description',)
-    success_url = reverse_lazy('insta:photo_add')
+    fields = ('album', 'image', 'description',)
+    success_url = reverse_lazy('insta:allPhotoAB')
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
@@ -39,7 +39,7 @@ class AlbumPhotoCV(LoginRequiredMixin, CreateView, ):
     redirect_field_name = 'login'
 
     fields = ('name', 'slug',)
-    success_url = reverse_lazy('insta:photo_add')
+    success_url = reverse_lazy('insta:allPhotoAB')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
