@@ -70,7 +70,7 @@ def allPhotoAB(request, c_slug=None):
         print(c_slug, "11111111111")
         # photos_list = Photo.objects.all()  #원래있던 가나다 순 올포토 보이기
         photos_list = Photo.objects.order_by('-upload_dt')
-    paginator = Paginator(photos_list, 9)
+    paginator = Paginator(photos_list, 12)
     try:
         page = int(request.GET.get('page', 1))
     except:
@@ -84,13 +84,20 @@ def allPhotoAB(request, c_slug=None):
     return render(request, 'insta/album.html', {'album': c_page, 'photos': photos})
 
 
-def PhotoABDetail(request, c_slug, photo_slug):
-    try:
-        photo = Photo.objects.get(album__slug = c_slug, slug = photo_slug)
-    except Exception as e :
-        raise e
 
-    return render(request, 'insta/insta.html', {'insta' : photo})
+
+
+
+
+
+
+# def PhotoABDetail(request, c_slug, photo_slug):
+#     try:
+#         photo = Photo.objects.get(album__slug = c_slug, slug = photo_slug)
+#     except Exception as e :
+#         raise e
+#
+#     return render(request, 'insta/insta.html', {'insta' : photo})
 
 
 

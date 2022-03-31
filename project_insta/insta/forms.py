@@ -3,7 +3,7 @@ from insta.models import Album, Photo, Answer
 from django import forms
 
 PhotoInlineFormSet = inlineformset_factory(Album, Photo,
-                                           fields=['image', 'title', 'slug'],
+                                           fields=['image', 'title',],
                                            extra=2)
 
 

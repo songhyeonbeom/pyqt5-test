@@ -24,7 +24,7 @@ class Album(models.Model):
 
 class Photo(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
-    slug = models.SlugField(max_length=250, unique=True, null=True, blank=True)
+    # slug = models.SlugField(max_length=250, unique=True, null=True, blank=True)
 
     title = models.CharField('TITLE', max_length=30)
     image = ThumbnailImageField('IMAGE', upload_to='insta/%Y/%m')
