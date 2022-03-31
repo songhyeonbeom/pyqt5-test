@@ -28,9 +28,7 @@
     <form action="." method="post">
         {% endif %}
         {% csrf_token %}
-
         <h4>create or update album contents</h4>
-
         <fieldset class="card pt-3">
 
             <div class="form-group row">
@@ -62,13 +60,6 @@
                 {{ form.image|add_label_class:"col-form-label col-sm-3 ml-3 font-weight-bold" }}
                 <div class="col-sm-5">
                     {{ form.image|add_class:"form-control-file" }}
-                </div>
-            </div>
-
-            <div class="form-group row">
-                {{ form.title|add_label_class:"col-form-label col-sm-3 ml-3 font-weight-bold" }}
-                <div class="col-sm-5">
-                    {{ form.title|add_class:"form-control" }}
                 </div>
             </div>
 
