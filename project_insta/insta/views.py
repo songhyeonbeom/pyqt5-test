@@ -1,18 +1,29 @@
+import requests
 from django.views.generic import ListView, DetailView, CreateView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+import insta.models
 from insta.forms import PhotoInlineFormSet
 from django.shortcuts import render, get_object_or_404
 from insta.models import Album, Photo
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
+from common.models import User
 
 
 
 
-class PhotoCV(LoginRequiredMixin, CreateView,):
 
+
+
+
+
+
+
+class PhotoCV(LoginRequiredMixin, CreateView, ):
     model = Photo
+
     login_url = '/common/login/'
     redirect_field_name = 'login'
 
@@ -22,7 +33,10 @@ class PhotoCV(LoginRequiredMixin, CreateView,):
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
+
         return super().form_valid(form)
+
+
 
 
 
