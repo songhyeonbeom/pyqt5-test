@@ -105,7 +105,7 @@ def answer_modify(request, answer_id):
             answer = form.save(commit=False)
             answer.modify_date = timezone.now()
             answer.save()
-            return redirect('insta:photo_detail', photo_id=answer.photo.id)
+            return redirect('insta:photo_detail', pk=answer.photo.id)
     else:
         form = AnswerForm(instance=answer)
     context = {'answer': answer, 'form': form}
