@@ -17,6 +17,7 @@ class PhotoCV(LoginRequiredMixin, CreateView,):
     redirect_field_name = 'login'
 
     fields = ('album', 'image', 'description',)
+
     success_url = reverse_lazy('insta:allPhotoAB')
 
     def form_valid(self, form):

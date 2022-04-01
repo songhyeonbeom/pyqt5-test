@@ -17,12 +17,14 @@ class AlbumAdmin(admin.ModelAdmin):
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'upload_dt',)
-    search_fields = ['slug', ]
+    list_display = ('id', 'image', 'upload_dt',)
+    search_fields = ['id', 'image', ]
 
 
 @admin.register(Answer)
 class AnswerAdmin(admin.ModelAdmin):
     list_display = ['id', 'content', 'create_date', 'owner', 'modify_date',]
-    list_display_links = ['id',]
+    list_display_links = ['id', ]
+    search_fields = ['content', ]
+
 

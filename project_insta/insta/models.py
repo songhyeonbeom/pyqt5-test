@@ -27,12 +27,12 @@ class Photo(models.Model):
     image = ThumbnailImageField('IMAGE', upload_to='insta/%Y/%m')
     description = models.TextField('Photo Description', blank=True)
 
-    title = models.CharField('TITLE', null=True, max_length=30)
+    title = models.CharField('TITLE', max_length=30, null=True)
     upload_dt = models.DateTimeField('UPLOAD DATE', auto_now_add=True)
 
     owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name='owner_photo')
     voter = models.ManyToManyField(User, related_name='voter_photo')
-    modify_date = models.DateTimeField(null=True, blank=True)
+    modify_date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         ordering = ('title',)
