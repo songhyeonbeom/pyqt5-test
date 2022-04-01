@@ -15,16 +15,14 @@ class AlbumAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 
-
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'upload_dt',)
-    search_fields = ['title', 'slug', ]
+    list_display = ('id', 'upload_dt',)
+    search_fields = ['slug', ]
 
 
 @admin.register(Answer)
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ['id', 'photo', 'content', 'create_date', 'owner']
-    list_display_links = ['content', 'create_date']
-
+    list_display = ['id', 'content', 'create_date', 'owner', 'modify_date',]
+    list_display_links = ['id',]
 

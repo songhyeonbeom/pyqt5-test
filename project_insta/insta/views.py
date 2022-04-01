@@ -5,6 +5,8 @@ from django.views.generic import CreateView, UpdateView, DeleteView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+from common.models import User
 from insta.forms import PhotoInlineFormSet, PhotoForm
 from config.views import OwnerOnlyMixin
 from django.utils import timezone
@@ -18,9 +20,10 @@ from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
 
 
-class PhotoCV(LoginRequiredMixin, CreateView, ):
-    model = Photo
+class PhotoCV(LoginRequiredMixin, CreateView,):
 
+    model = Photo
+    user = User
     login_url = '/common/login/'
     redirect_field_name = 'login'
 
@@ -30,6 +33,20 @@ class PhotoCV(LoginRequiredMixin, CreateView, ):
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super().form_valid(form)
+    print(user.username, 'ffffffffffffffff')
+
+
+
+    def album_links(request):
+        albumON = request.user.id
+        print(request)
+        links = Photo.objects.filter(owner_id=albumON)
+        return dict(links=links)
+        print(albumON)
+
+
+
+
 
 
 class AlbumPhotoCV(LoginRequiredMixin, CreateView, ):

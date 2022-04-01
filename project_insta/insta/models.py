@@ -38,7 +38,7 @@ class Photo(models.Model):
         ordering = ('title',)
 
     def __str__(self):
-        return self.title
+        return self.image.name
 
     def get_absolute_url(self):
         return reverse('insta:photo_detail', args = [self.id])
@@ -53,7 +53,6 @@ class Answer(models.Model):
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='owner_answer')
     voter = models.ManyToManyField(User, related_name='voter_answer')
-
 
 
 

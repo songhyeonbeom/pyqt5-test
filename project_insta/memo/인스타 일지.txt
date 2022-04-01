@@ -239,10 +239,33 @@ SNS를 만들고 싶었습니다.
 6.user 검색 후 그 user페이지 앨범 훑어볼수있게 하기.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 
 
+class PhotoCV(LoginRequiredMixin, CreateView, ):
+
+    model = Photo
+
+    login_url = '/common/login/'
+    redirect_field_name = 'login'
+
+    fields = ('album', 'image', 'description',)
+    success_url = reverse_lazy('insta:allPhotoAB')
+
+    def get_context_data(self, **kwargs):
+
+        kwargs['latest_album_list'] = Photo.objects.filter(owner_id = self.request.user)
+        return super(PhotoCV, self).get_context_data(**kwargs)
+
+    def form_valid(self, form):
+        user = User.objects.all()
+        field_name = ('id', 'email', 'username')
+
+        print(user.username)
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 
 
