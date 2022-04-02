@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
 import insta.models
 from insta.forms import PhotoInlineFormSet
@@ -77,6 +78,19 @@ class AlbumPhotoCV(LoginRequiredMixin, CreateView, ):
             return self.render_to_response(self.get_context_data(form=form))
 
 
+def allPhotoMY(request, owner_id):
+    photo = insta.models.Photo
+    allphoto = None
+    if request.user != photo.owner:
+        allphoto = get_object_or_404(Photo, pk=owner_id)
+        print(owner_id, '++++++++++++++++++111')
+
+    else:
+        allphoto = Photo.objects.filter(photo = owner_id,).order_by('-upload_dt')
+
+
+
+        return redirect('insta:photo_detail', pk=photo.id)
 
 
 
@@ -94,6 +108,7 @@ def allPhotoAB(request, c_slug=None):
         # photos_list = Photo.objects.all()  #원래있던 가나다 순 올포토 보이기
         photos_list = Photo.objects.order_by('-upload_dt')
     paginator = Paginator(photos_list, 12)
+
     try:
         page = int(request.GET.get('page', 1))
     except:
