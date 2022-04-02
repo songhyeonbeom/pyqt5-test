@@ -17,7 +17,7 @@ class AlbumAdmin(admin.ModelAdmin):
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'image', 'upload_dt',)
+    list_display = ('id', 'album', 'image', 'upload_dt',)
     search_fields = ['id', 'image', ]
 
 
