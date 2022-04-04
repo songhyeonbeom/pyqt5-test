@@ -11,6 +11,8 @@ urlpatterns = [
 
     path('', views.allPhotoAB, name='allPhotoAB'),
 
+    path('myPhotoAB/<int:photo_id>/', views.myPhotoAB, name='myPhotoAB'),
+
     path('<slug:c_slug>/', views.allPhotoAB, name='album_detail'),
 
     path('photo/<int:pk>/', views.PhotoDV.as_view(), name='photo_detail'),
