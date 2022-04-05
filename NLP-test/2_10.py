@@ -29,3 +29,4 @@ spelled_sent = spell_checker.check(new_sent)
 hanspell_sent = spelled_sent.checked
 print(hanspell_sent)
 print(kospacing_sent)
+
