@@ -79,35 +79,7 @@ class AlbumPhotoCV(LoginRequiredMixin, CreateView, ):
 
 
 
-
-# def myPhotoAB(request, c_slug=None):
-#     c_page = None
-#     photos_list = None
-#     if c_slug != None:
-#         print(c_slug, "444444444444444444")
-#         c_page = get_object_or_404(Album, slug = c_slug)
-#         photos_list = Photo.objects.filter(album = c_page).order_by('-upload_dt')
-#
-#     else:
-#         print(c_slug, "333333333333333333")
-#
-#         photos_list = Photo.objects.order_by('-upload_dt')
-#     paginator = Paginator(photos_list, 12)
-#
-#     try:
-#         page = int(request.GET.get('page', 1))
-#     except:
-#         page = 1
-#
-#     try:
-#         photos = paginator.page(page)
-#     except(EmptyPage, InvalidPage):
-#         photos = paginator.page(paginator.num_pages)
-#
-#     return render(request, 'insta/myalbum.html', {'album': c_page, 'photos': photos})
-
-
-
+#(일단은 되긴한데 좀 이상한거)
 def myPhotoAB(request, c_slug=None):
     c_page = None
     photos_list = None
@@ -118,7 +90,6 @@ def myPhotoAB(request, c_slug=None):
 
     else:
         print(c_slug, "333333333333333333")
-        c_page = get_object_or_404(Photo, slug = c_slug)
 
         photos_list = Photo.objects.order_by('-upload_dt')
     paginator = Paginator(photos_list, 12)
@@ -133,7 +104,36 @@ def myPhotoAB(request, c_slug=None):
     except(EmptyPage, InvalidPage):
         photos = paginator.page(paginator.num_pages)
 
-    return render(request, 'insta/myalbum.html', {'username': c_page, 'photos': photos})
+    return render(request, 'insta/myalbum.html', {'album': c_page, 'photos': photos})
+
+
+# #(안되는거 지금 이리저리 만지는중인거)
+# def myPhotoAB(request, c_slug=None):
+#     c_page = None
+#     photos_list = None
+#     if c_slug != None:
+#         print(c_slug, "444444444444444444")
+#         c_page = get_object_or_404(Album, slug = c_slug)
+#         photos_list = Photo.objects.filter(album = c_page).order_by('-upload_dt')
+#
+#     else:
+#         print(c_slug, "333333333333333333")
+#         c_page = get_object_or_404(Photo, slug = c_slug)
+#
+#         photos_list = Photo.objects.order_by('-upload_dt')
+#     paginator = Paginator(photos_list, 12)
+#
+#     try:
+#         page = int(request.GET.get('page', 1))
+#     except:
+#         page = 1
+#
+#     try:
+#         photos = paginator.page(page)
+#     except(EmptyPage, InvalidPage):
+#         photos = paginator.page(paginator.num_pages)
+#
+#     return render(request, 'insta/myalbum.html', {'username': c_page, 'photos': photos})
 
 
 
