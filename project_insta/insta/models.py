@@ -38,14 +38,10 @@ class Photo(models.Model):
         ordering = ('title',)
 
     def __str__(self):
-        return self.image.name
+        return '{}'.format(self.image.name)
 
     def get_absolute_url(self):
         return reverse('insta:photo_detail', args = [self.id])
-
-    def get_absolute_url2(self):
-        return reverse('insta:photo_detail', args = [self.id])
-
 
 
 class Answer(models.Model):
