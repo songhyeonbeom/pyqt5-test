@@ -84,19 +84,18 @@ class AlbumPhotoCV(LoginRequiredMixin, CreateView, ):
 
 
 
-def myPhotoAB(request, owner_id=None):
+def myPhotoAB(request, owner_id):
     photo = insta.models.Photo
     c_page = None
     myphoto_list = None
-    if request.user != photo.owner:
+    if request.user == photo.owner:
         print(owner_id, '++++++++++++++++++111+++++++++++++++++')
-        c_page = get_object_or_404(Photo, pk=owner_id)
-        myphoto_list = Photo.owner.primary_key.objects.all()
+        myphoto_list = Photo.objects.filter(photo = owner_id,).order_by('-upload_dt')
 
+        # c_page = get_object_or_404(Photo, pk=owner_id)
     else:
-        allphoto = Photo.objects.filter(photo = owner_id,).order_by('-upload_dt')
+        pass
         print(owner_id, '!!!!!!!!!!!!!@@@@@@@@@222222222222222@@@@@@@@@')
-
 
         return redirect('insta:photo_detail', pk=photo.id)
 
@@ -108,8 +107,8 @@ def allPhotoAB(request, c_slug=None):
     if c_slug != None:
         print(c_slug, "22222222")
         c_page = get_object_or_404(Album, slug = c_slug)
-        photos_list = Photo.objects.filter(album = c_page, ).order_by('-upload_dt')
-
+        photos_list = Photo.objects.filter(album = c_page).order_by('-upload_dt')
+        return render(request, 'insta/album.html', {'album': c_page, 'photos': photos})
 
     else:
         print(c_slug, "11111111111")
