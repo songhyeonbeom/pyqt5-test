@@ -84,20 +84,33 @@ class AlbumPhotoCV(LoginRequiredMixin, CreateView, ):
 
 
 
-def myPhotoAB(request, owner_id):
-    photo = insta.models.Photo
+def myPhotoAB(request, c_slug=None):
     c_page = None
-    myphoto_list = None
-    if request.user == photo.owner:
-        print(owner_id, '++++++++++++++++++111+++++++++++++++++')
-        myphoto_list = Photo.objects.filter(photo = owner_id,).order_by('-upload_dt')
+    photos_list = None
+    if c_slug != None:
+        print(c_slug, "444444444444444444")
+        c_page = get_object_or_404(Album, slug = c_slug)
+        photos_list = Photo.objects.filter(album = c_page).order_by('-upload_dt')
 
-        # c_page = get_object_or_404(Photo, pk=owner_id)
-    else:
-        pass
-        print(owner_id, '!!!!!!!!!!!!!@@@@@@@@@222222222222222@@@@@@@@@')
+    else :
+        print(c_slug, "333333333333333333")
+        # photos_list = Photo.objects.all()  #원래있던 가나다 순 올포토 보이기
+        photos_list = Photo.objects.order_by('-upload_dt')
+    paginator = Paginator(photos_list, 12)
 
-        return redirect('insta:photo_detail', pk=photo.id)
+
+
+    try:
+        page = int(request.GET.get('page', 1))
+    except:
+        page = 1
+
+    try:
+        photos = paginator.page(page)
+    except(EmptyPage, InvalidPage):
+        photos = paginator.page(paginator.num_pages)
+
+    return render(request, 'insta/myalbum.html', {'album': c_page, 'photos': photos})
 
 
 
@@ -105,16 +118,17 @@ def allPhotoAB(request, c_slug=None):
     c_page = None
     photos_list = None
     if c_slug != None:
-        print(c_slug, "22222222")
+        print(c_slug, "22222222222222")
         c_page = get_object_or_404(Album, slug = c_slug)
         photos_list = Photo.objects.filter(album = c_page).order_by('-upload_dt')
-        return render(request, 'insta/album.html', {'album': c_page, 'photos': photos})
 
-    else:
-        print(c_slug, "11111111111")
+    else :
+        print(c_slug, "111111111111111111")
         # photos_list = Photo.objects.all()  #원래있던 가나다 순 올포토 보이기
         photos_list = Photo.objects.order_by('-upload_dt')
     paginator = Paginator(photos_list, 12)
+
+
 
     try:
         page = int(request.GET.get('page', 1))

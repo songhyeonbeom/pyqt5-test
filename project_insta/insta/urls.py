@@ -11,7 +11,7 @@ urlpatterns = [
 
     path('', views.allPhotoAB, name='allPhotoAB'),
 
-    path('myPhotoAB/<int:photo_id>/', views.myPhotoAB, name='myPhotoAB'),
+    path('myPhotoAB', views.myPhotoAB, name='myPhotoAB'),
 
     path('<slug:c_slug>/', views.allPhotoAB, name='album_detail'),
 
