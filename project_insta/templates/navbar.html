@@ -11,9 +11,11 @@
             </li>
         </ul>
 
+
         {% for cat in links %}
         <a class="nav-link" href="{{ cat.get_absolute_url }}">★{{cat.name}}</a>
         {% endfor %}
+
 
         {% if user.is_authenticated %}
         <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
@@ -41,7 +43,6 @@
 
 
                 <a class="nav-link" href="{% url 'insta:myPhotoAB' %}">나의사진들</a>
-
 
 
             </li>
