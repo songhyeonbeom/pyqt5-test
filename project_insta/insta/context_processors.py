@@ -11,9 +11,9 @@ def menu_links(request):
 
 
 
-def menu_links2(request) :
-    allphoto = request.user.id
-    links2 = Photo.objects.filter(owner_id=allphoto)
-    return dict(links2 = links2)
+# def menu_links2(request) :
+#     allphoto = request.user.id
+#     links2 = Photo.objects.filter(owner_id=allphoto)
+#     return dict(links2 = links2)
 
 

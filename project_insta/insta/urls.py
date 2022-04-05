@@ -11,8 +11,8 @@ urlpatterns = [
 
     path('', views.allPhotoAB, name='allPhotoAB'),
 
-    path('myPhotoAB/', views.myPhotoAB, name='myPhotoAB'),
-    # path('<id:c_slug>/', views.myPhotoAB, name='myPhotoAB'),
+    # path('myPhotoAB/', views.myPhotoAB, name='myPhotoAB'),
+    path('<slug:c_slug>/', views.myPhotoAB, name='myPhotoAB'),
 
     path('<slug:c_slug>/', views.allPhotoAB, name='album_detail'),
 
