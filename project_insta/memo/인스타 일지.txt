@@ -312,7 +312,21 @@ return context
 
 
 
+네비 바 앨범 카테고리 버튼
 
+        {% for cat in links %}
+        <a class="nav-link" href="{{ cat.get_absolute_url }}">★{{cat.name}}</a>
+        {% endfor %}
+
+links는 insta.context_processors.py 에 정의되어있다.
+
+def menu_links(request):
+    customer = request.user.id
+    print(request)
+    links = Album.objects.filter(owner_id=customer)
+    return dict(links = links)
+
+links는 Album의 내용물에 필터가 걸려저서 오너아이디로 걸러진 것들.
 
 
 
